@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suivi Parental â€” Brevet 2026</title>
+<title>Suivi Parental — Brevet 2026</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#09090f;color:#e8e8f0;font-family:Arial,sans-serif;padding:1rem;}
@@ -112,15 +112,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
   <div class="header">
     <div>
-      <h1>ðŸ“Š Suivi Parental â€” Brevet 2026</h1>
-      <p>Note rÃ©elle sur le nombre de questions Â· Chapitres faibles et forts Â· DerniÃ¨res sessions</p>
+      <h1>📊 Suivi Parental — Brevet 2026</h1>
+      <p>Note réelle sur le nombre de questions · Chapitres faibles et forts · Dernières sessions</p>
     </div>
-    <a href="index.html" class="back">â† Hub</a>
+    <a href="index.html" class="back">← Hub</a>
   </div>
 
   <div class="eleve-tabs">
-    <button class="etab e1" id="tabW">ðŸ‘¤ Ã‰lÃ¨ve 1</button>
-    <button class="etab" id="tabN">ðŸ‘¤ Ã‰lÃ¨ve 2</button>
+    <button class="etab e1" id="tabW">👤 Élève 1</button>
+    <button class="etab" id="tabN">👤 Élève 2</button>
   </div>
 
   <div class="alerte" id="alerte"></div>
@@ -134,8 +134,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <!-- CHAPITRES FAIBLES ET FORTS -->
   <div class="chapitres-section">
     <div class="chap-head">
-      <span style="font-size:1.2rem">ðŸ“‹</span>
-      <h3>Chapitres par matiÃ¨re</h3>
+      <span style="font-size:1.2rem">📋</span>
+      <h3>Chapitres par matière</h3>
     </div>
     <div class="chap-body">
       <div class="chap-tabs" id="chapTabs"></div>
@@ -146,16 +146,16 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <!-- SESSIONS RECENTES -->
   <div class="chapitres-section">
     <div class="chap-head">
-      <span style="font-size:1.2rem">ðŸ•</span>
-      <h3>DerniÃ¨res sessions</h3>
+      <span style="font-size:1.2rem">🕐</span>
+      <h3>Dernières sessions</h3>
     </div>
     <div class="chap-body" id="sessionsBody"></div>
   </div>
 
   <div class="btn-row">
-    <button class="btn" id="btnRefresh">ðŸ”„ Actualiser</button>
-    <button class="btn" id="btnExport">ðŸ“¤ Exporter</button>
-    <button class="btn btn-danger" id="btnReset">ðŸ—‘ Initialiser les donnÃ©es</button>
+    <button class="btn" id="btnRefresh">🔄 Actualiser</button>
+    <button class="btn" id="btnExport">📤 Exporter</button>
+    <button class="btn btn-danger" id="btnReset">🗑 Initialiser les données</button>
   </div>
 
 </div>
@@ -165,20 +165,20 @@ var eleve = 'wassil';
 var chapMatiere = 'francais';
 
 var MATIERES = [
-  {id:'francais', nom:'FranÃ§ais',     ico:'ðŸ‡«ðŸ‡·', couleur:'#4f8ef7', cls:'mat-fr'},
-  {id:'maths',    nom:'Maths',        ico:'ðŸ“', couleur:'#e8c87a', cls:'mat-ma'},
-  {id:'histoire', nom:'Histoire-GÃ©o', ico:'ðŸŒ', couleur:'#f5a623', cls:'mat-hi'},
-  {id:'sciences', nom:'Sciences',     ico:'ðŸ”¬', couleur:'#5eaacf', cls:'mat-sc'}
+  {id:'francais', nom:'Français',     ico:'🇫🇷', couleur:'#4f8ef7', cls:'mat-fr'},
+  {id:'maths',    nom:'Maths',        ico:'📐', couleur:'#e8c87a', cls:'mat-ma'},
+  {id:'histoire', nom:'Histoire-Géo', ico:'🌍', couleur:'#f5a623', cls:'mat-hi'},
+  {id:'sciences', nom:'Sciences',     ico:'🔬', couleur:'#5eaacf', cls:'mat-sc'}
 ];
 
-// â”€â”€â”€ Lecture localStorage avec gestion de l'ancien format (pourcentage seul) â”€â”€â”€
+// ─── Lecture localStorage avec gestion de l'ancien format (pourcentage seul) ───
 function getSessions(matiere) {
   try { 
     var sessions = JSON.parse(localStorage.getItem('suivi_sessions_'+matiere+'_'+eleve)||'[]');
-    // Conversion pour compatibilitÃ© avec l'ancien format (noteSur non dÃ©fini)
+    // Conversion pour compatibilité avec l'ancien format (noteSur non défini)
     return sessions.map(function(s){
       if(s.noteSur === undefined && s.pourcentage !== undefined) {
-        // Ancien format : on simule une note sur 20 (pour compatibilitÃ©)
+        // Ancien format : on simule une note sur 20 (pour compatibilité)
         return Object.assign({}, s, {noteSur: 20, noteObtenue: Math.round(s.pourcentage * 20 / 100)});
       }
       return s;
@@ -202,13 +202,13 @@ function getAllSessions() {
   return all.sort(function(a,b){ return new Date(b.date)-new Date(a.date); });
 }
 
-// â”€â”€â”€ Formater une note (X/Y) â”€â”€â”€
+// ─── Formater une note (X/Y) ───
 function formatNote(obtenue, sur) {
   if(sur === undefined || sur === 0) return obtenue + '/?';
   return obtenue + '/' + sur;
 }
 
-// â”€â”€â”€ Calculer le pourcentage Ã  partir de noteObtenue/noteSur â”€â”€â”€
+// ─── Calculer le pourcentage à partir de noteObtenue/noteSur ───
 function calculerPourcentage(session) {
   if(session.noteSur && session.noteSur > 0) {
     return Math.round(session.noteObtenue / session.noteSur * 100);
@@ -216,7 +216,7 @@ function calculerPourcentage(session) {
   return session.pourcentage || 0;
 }
 
-// â”€â”€â”€ Note sur 10 (pour l'affichage global) : pourcentage >= 50% = bonne rÃ©ponse â”€â”€â”€
+// ─── Note sur 10 (pour l'affichage global) : pourcentage >= 50% = bonne réponse ───
 function pctToNote(pct) {
   return Math.round(pct / 10);
 }
@@ -234,7 +234,7 @@ function noteBorder(n) {
 }
 
 function noteLibelle(n) {
-  return n >= 9 ? 'ðŸŒŸ Excellent' : n >= 8 ? 'ðŸ‘ TrÃ¨s bien' : n >= 6 ? 'ðŸ‘Œ Bien' : n >= 5 ? 'ðŸ’ª Passable' : 'ðŸ“š Ã€ retravailler';
+  return n >= 9 ? '🌟 Excellent' : n >= 8 ? '👍 Très bien' : n >= 6 ? '👌 Bien' : n >= 5 ? '💪 Passable' : '📚 À retravailler';
 }
 
 function fmtDate(str) {
@@ -242,7 +242,7 @@ function fmtDate(str) {
   catch(e){ return str; }
 }
 
-// â”€â”€â”€ Alerte â”€â”€â”€
+// ─── Alerte ───
 function renderAlerte() {
   var all = getAllSessions();
   var el = document.getElementById('alerte');
@@ -250,18 +250,18 @@ function renderAlerte() {
   var diff = Math.floor((Date.now()-new Date(all[0].date))/(1000*60*60*24));
   if(diff >= 2) {
     el.style.display='block';
-    el.innerHTML = 'âš ï¸ <strong>'+(eleve==='eleve1'?'Ã‰lÃ¨ve 1':'Ã‰lÃ¨ve 2')+'</strong> n\'a pas travaillÃ© depuis <strong>'+diff+' jours</strong>. DerniÃ¨re session : '+fmtDate(all[0].date);
+    el.innerHTML = '⚠️ <strong>'+(eleve==='eleve1'?'Élève 1':'Élève 2')+'</strong> n\'a pas travaillé depuis <strong>'+diff+' jours</strong>. Dernière session : '+fmtDate(all[0].date);
   } else {
     el.style.display='none';
   }
 }
 
-// â”€â”€â”€ Note globale (moyenne des pourcentages, affichÃ©e en X/Y simulÃ©) â”€â”€â”€
+// ─── Note globale (moyenne des pourcentages, affichée en X/Y simulé) ───
 function renderNoteGlobale() {
   var all = getAllSessions().slice(0,10);
   var el = document.getElementById('noteGlobale');
   if(!all.length) {
-    el.innerHTML = '<div class="vide" style="width:100%">Aucune session enregistrÃ©e pour l\'instant.</div>';
+    el.innerHTML = '<div class="vide" style="width:100%">Aucune session enregistrée pour l\'instant.</div>';
     return;
   }
   var moyPct = Math.round(all.reduce(function(a,s){return a + calculerPourcentage(s);},0)/all.length);
@@ -276,8 +276,8 @@ function renderNoteGlobale() {
   
   // tendance
   var t5 = all.slice(0,5).map(function(s){return calculerPourcentage(s);});
-  var tend = t5.length>=2?(t5[0]>t5[t5.length-1]?'â†‘ En progression':t5[0]<t5[t5.length-1]?'â†“ En baisse':'â†’ Stable'):'â€”';
-  var tendCol = tend.includes('â†‘')?'#5ecfb1':tend.includes('â†“')?'#e87a7a':'#9090a8';
+  var tend = t5.length>=2?(t5[0]>t5[t5.length-1]?'↑ En progression':t5[0]<t5[t5.length-1]?'↓ En baisse':'→ Stable'):'—';
+  var tendCol = tend.includes('↑')?'#5ecfb1':tend.includes('↓')?'#e87a7a':'#9090a8';
 
   el.innerHTML =
     '<div class="note-cercle" style="background:'+coulBg+';border:3px solid '+coulBord+'">'
@@ -285,17 +285,17 @@ function renderNoteGlobale() {
     +'<div class="note-denom">/10</div>'
     +'</div>'
     +'<div class="note-infos">'
-    +'<div class="note-titre">Note globale de '+(eleve==='eleve1'?'Ã‰lÃ¨ve 1':'Ã‰lÃ¨ve 2')+' â€” moyenne des 10 derniÃ¨res sessions</div>'
+    +'<div class="note-titre">Note globale de '+(eleve==='eleve1'?'Élève 1':'Élève 2')+' — moyenne des 10 dernières sessions</div>'
     +'<div class="note-sub">'
-    +'<strong>'+moyPct+'%</strong> de bonnes rÃ©ponses en moyenne<br>'
-    +'<strong>'+nb+'</strong> session'+(nb>1?'s':'')+' enregistrÃ©e'+(nb>1?'s':'')+' Â· DerniÃ¨re : <strong>'+fmtDate(dern.date)+'</strong><br>'
-    +'<span style="color:'+tendCol+'"><strong>'+tend+'</strong></span> sur les 5 derniÃ¨res sessions'
+    +'<strong>'+moyPct+'%</strong> de bonnes réponses en moyenne<br>'
+    +'<strong>'+nb+'</strong> session'+(nb>1?'s':'')+' enregistrée'+(nb>1?'s':'')+' · Dernière : <strong>'+fmtDate(dern.date)+'</strong><br>'
+    +'<span style="color:'+tendCol+'"><strong>'+tend+'</strong></span> sur les 5 dernières sessions'
     +'</div>'
     +'<span class="badge" style="background:'+coulBg+';color:'+coulBord+';border:1px solid '+coulBord+'">'+libelle+'</span>'
     +'</div>';
 }
 
-// â”€â”€â”€ Cartes matiÃ¨res (avec note sur le vrai dÃ©nominateur) â”€â”€â”€
+// ─── Cartes matières (avec note sur le vrai dénominateur) ───
 function renderMatieres() {
   var html = '';
   MATIERES.forEach(function(m){
@@ -303,19 +303,19 @@ function renderMatieres() {
     if(!sessions.length) {
       html += '<div class="matiere-card '+m.cls+'">'
         +'<div class="mat-head"><span class="mat-nom">'+m.ico+' '+m.nom+'</span>'
-        +'<div style="text-align:right"><div class="mat-note" style="color:#5a5a72">â€”</div><div class="mat-note-label">/10</div></div></div>'
+        +'<div style="text-align:right"><div class="mat-note" style="color:#5a5a72">—</div><div class="mat-note-label">/10</div></div></div>'
         +'<div class="mat-bar-wrap"><div class="mat-bar"><div class="mat-fill" style="width:0%;background:'+m.couleur+'"></div></div>'
         +'<div class="mat-bar-label"><span>0%</span><span>100%</span></div></div>'
         +'<div class="mat-sessions">0 session</div></div>';
       return;
     }
-    // Prendre les 5 derniÃ¨res sessions pour la moyenne
+    // Prendre les 5 dernières sessions pour la moyenne
     var recentes = sessions.slice(0,5);
     var moyPct = Math.round(recentes.reduce(function(a,s){return a + calculerPourcentage(s);},0)/recentes.length);
     var note = pctToNote(moyPct);
     var col = noteBorder(note);
     
-    // DerniÃ¨re session avec note rÃ©elle
+    // Dernière session avec note réelle
     var dern = sessions[0];
     var dernNote = dern.noteSur ? formatNote(dern.noteObtenue, dern.noteSur) : dern.pourcentage+'%';
     
@@ -324,12 +324,12 @@ function renderMatieres() {
       +'<div style="text-align:right"><div class="mat-note" style="color:'+col+'">'+note+'</div><div class="mat-note-label">/10 (moy)</div></div></div>'
       +'<div class="mat-bar-wrap"><div class="mat-bar"><div class="mat-fill" style="width:'+moyPct+'%;background:'+m.couleur+'"></div></div>'
       +'<div class="mat-bar-label"><span style="color:'+col+'">'+moyPct+'%</span><span style="color:#5a5a72">100%</span></div></div>'
-      +'<div class="mat-sessions">'+sessions.length+' session'+(sessions.length>1?'s':'')+' Â· DerniÃ¨re : '+dernNote+' Â· '+noteLibelle(note)+'</div></div>';
+      +'<div class="mat-sessions">'+sessions.length+' session'+(sessions.length>1?'s':'')+' · Dernière : '+dernNote+' · '+noteLibelle(note)+'</div></div>';
   });
-  document.getElementById('matieresGrid').innerHTML = html || '<div class="vide">Aucune donnÃ©e.</div>';
+  document.getElementById('matieresGrid').innerHTML = html || '<div class="vide">Aucune donnée.</div>';
 }
 
-// â”€â”€â”€ Chapitres faibles / forts â”€â”€â”€
+// ─── Chapitres faibles / forts ───
 function buildChapTabs() {
   var html = '';
   MATIERES.forEach(function(m){
@@ -351,10 +351,10 @@ function renderChapitres() {
   var sessions = getSessions(chapMatiere).slice(0,5);
   var el = document.getElementById('chapContent');
   if(!sessions.length){
-    el.innerHTML='<div class="vide">Pas encore de donnÃ©es pour cette matiÃ¨re.</div>';
+    el.innerHTML='<div class="vide">Pas encore de données pour cette matière.</div>';
     return;
   }
-  // Calculer la moyenne par chapitre sur les 5 derniÃ¨res sessions
+  // Calculer la moyenne par chapitre sur les 5 dernières sessions
   var taux = {};
   sessions.forEach(function(s){
     if(s.chapitresTaux) Object.keys(s.chapitresTaux).forEach(function(ch){
@@ -363,7 +363,7 @@ function renderChapitres() {
     });
   });
   if(!Object.keys(taux).length){
-    el.innerHTML='<div class="vide">Pas encore de donnÃ©es chapitres.</div>';
+    el.innerHTML='<div class="vide">Pas encore de données chapitres.</div>';
     return;
   }
 
@@ -392,22 +392,22 @@ function renderChapitres() {
   }
 
   el.innerHTML =
-    renderGroupe('âš  Ã€ retravailler (note < 6/10)', faibles, 'faible', '#e87a7a')
-    + renderGroupe('ðŸ’ª En progression (6-8/10)', moyens, 'moyen', '#e8c87a')
-    + renderGroupe('âœ… Points forts (â‰¥ 8/10)', forts, 'fort', '#5ecfb1');
+    renderGroupe('⚠ À retravailler (note < 6/10)', faibles, 'faible', '#e87a7a')
+    + renderGroupe('💪 En progression (6-8/10)', moyens, 'moyen', '#e8c87a')
+    + renderGroupe('✅ Points forts (≥ 8/10)', forts, 'fort', '#5ecfb1');
 }
 
-// â”€â”€â”€ Sessions rÃ©centes (affichage X/Y) â”€â”€â”€
+// ─── Sessions récentes (affichage X/Y) ───
 function renderSessions() {
   var all = getAllSessions().slice(0,15);
   var el = document.getElementById('sessionsBody');
-  if(!all.length){ el.innerHTML='<div class="vide">Aucune session enregistrÃ©e.</div>'; return; }
+  if(!all.length){ el.innerHTML='<div class="vide">Aucune session enregistrée.</div>'; return; }
 
   var rows = all.map(function(s){
     var pct = calculerPourcentage(s);
     var note = pctToNote(pct);
     var cls = note>=8?'score-ok':note>=5?'score-mid':'score-bad';
-    var chaps = Array.isArray(s.chapitres)?s.chapitres.slice(0,3).join(', ')+(s.chapitres.length>3?'â€¦':''):'â€”';
+    var chaps = Array.isArray(s.chapitres)?s.chapitres.slice(0,3).join(', ')+(s.chapitres.length>3?'…':''):'—';
     var noteAffichage = s.noteSur ? formatNote(s.noteObtenue, s.noteSur) : pct+'%';
     
     return '<tr>'
@@ -419,11 +419,11 @@ function renderSessions() {
   }).join('');
 
   el.innerHTML = '<table class="sessions-table">'
-    +'<thead><tr><th>Date</th><th>MatiÃ¨re</th><th>Chapitres rÃ©visÃ©s</th><th>Note</th></tr></thead>'
+    +'<thead><tr><th>Date</th><th>Matière</th><th>Chapitres révisés</th><th>Note</th></tr></thead>'
     +'<tbody>'+rows+'</tbody></table>';
 }
 
-// â”€â”€â”€ Main â”€â”€â”€
+// ─── Main ───
 function setEleve(e) {
   eleve = e;
   document.getElementById('tabW').className='etab'+(e==='eleve1'?' e1':'');
@@ -452,7 +452,7 @@ function exporterJSON() {
 }
 
 function reinitialiser() {
-  if(!confirm('Supprimer toutes les donnÃ©es de '+(eleve==='eleve1'?'Ã‰lÃ¨ve 1':'Ã‰lÃ¨ve 2')+' ?')) return;
+  if(!confirm('Supprimer toutes les données de '+(eleve==='eleve1'?'Élève 1':'Élève 2')+' ?')) return;
   MATIERES.forEach(function(m){ localStorage.removeItem('suivi_sessions_'+m.id+'_'+eleve); });
   render();
 }

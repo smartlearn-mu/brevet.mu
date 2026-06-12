@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>ðŸ¤– Correcteur â€“ Brevet 2026</title>
+  <title>🤖 Correcteur – Brevet 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
@@ -44,31 +44,31 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </head>
 <body>
 <div class="container">
-  <a href="index.html" class="back-link">â† Retour au hub</a>
-  <h1>ðŸ¤– Correcteur</h1>
-  <div class="sub">Notation â€¢ Correction â€¢ MÃ©thodologie par matiÃ¨re</div>
+  <a href="index.html" class="back-link">← Retour au hub</a>
+  <h1>🤖 Correcteur</h1>
+  <div class="sub">Notation • Correction • Méthodologie par matière</div>
 
   <div class="selecteur">
-    <label>ðŸ“š MatiÃ¨re : </label>
+    <label>📚 Matière : </label>
     <select id="matiereSelect">
-      <option value="francais">ðŸ“– FranÃ§ais (rÃ©daction, essai, commentaire)</option>
-      <option value="maths">ðŸ“ MathÃ©matiques (dÃ©monstration, rÃ©solution)</option>
-      <option value="histoire">ðŸŒ Histoire-GÃ©o & EMC (paragraphe argumentÃ©)</option>
-      <option value="sciences">ðŸ”¬ Sciences (dÃ©marche scientifique)</option>
+      <option value="francais">📖 Français (rédaction, essai, commentaire)</option>
+      <option value="maths">📐 Mathématiques (démonstration, résolution)</option>
+      <option value="histoire">🌍 Histoire-Géo & EMC (paragraphe argumenté)</option>
+      <option value="sciences">🔬 Sciences (démarche scientifique)</option>
     </select>
   </div>
 
   <textarea id="userTexte" rows="12" placeholder="Collez votre texte ici..."></textarea>
   
   <div class="btn-group">
-    <button id="corrigerBtn">ðŸ¤– Corriger mon texte</button>
-    <button id="effacerBtn">ðŸ—‘ï¸ Effacer</button>
+    <button id="corrigerBtn">🤖 Corriger mon texte</button>
+    <button id="effacerBtn">🗑️ Effacer</button>
   </div>
 
-  <div id="loading" class="loading">â³ Analyse en cours...</div>
+  <div id="loading" class="loading">⏳ Analyse en cours...</div>
   <div id="resultat" class="resultat"></div>
 
-  <div class="sub" style="margin-top:1rem; font-size:0.7rem;">ðŸ’¡ Le correcteur note selon le barÃ¨me officiel et donne une aide mÃ©thodologique adaptÃ©e Ã  la matiÃ¨re.</div>
+  <div class="sub" style="margin-top:1rem; font-size:0.7rem;">💡 Le correcteur note selon le barème officiel et donne une aide méthodologique adaptée à la matière.</div>
 </div>
 
 <script>
@@ -76,34 +76,34 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   // URL DU PROXY GOOGLE SHEETS
   // ============================================================
       
-  // BarÃ¨mes et mÃ©thodologies par matiÃ¨re
+  // Barèmes et méthodologies par matière
   const baremes = {
-    francais: { nom: "FranÃ§ais", points: 20, criteres: "Orthographe (4 pts), syntaxe (4 pts), cohÃ©rence (6 pts), pertinence (6 pts)", methodologie: "Introduction : amorce, prÃ©sentation, problÃ©matique, plan. DÃ©veloppement : paragraphes structurÃ©s, connecteurs, exemples. Conclusion : rappel, synthÃ¨se, ouverture." },
-    maths: { nom: "MathÃ©matiques", points: 20, criteres: "DÃ©marche (5 pts), calculs (5 pts), rÃ©daction (5 pts), rÃ©sultat (5 pts)", methodologie: "1. Lire l'Ã©noncÃ©, repÃ©rer les donnÃ©es. 2. Choisir la propriÃ©tÃ©/thÃ©orÃ¨me. 3. RÃ©diger les calculs Ã©tape par Ã©tape. 4. VÃ©rifier la cohÃ©rence du rÃ©sultat. 5. Conclure par une phrase." },
-    histoire: { nom: "Histoire-GÃ©o & EMC", points: 20, criteres: "Connaissances (6 pts), analyse (6 pts), argumentation (4 pts), expression (4 pts)", methodologie: "Paragraphe argumentÃ© : 1. Introduction (contexte, problÃ©matique). 2. DÃ©veloppement (thÃ¨se, arguments, exemples prÃ©cis). 3. Conclusion (rÃ©ponse, ouverture)." },
-    sciences: { nom: "Sciences", points: 20, criteres: "Connaissances (6 pts), dÃ©marche scientifique (6 pts), rigueur (4 pts), expression (4 pts)", methodologie: "DÃ©marche scientifique : 1. ProblÃ©matique/hypothÃ¨se. 2. Protocole expÃ©rimental. 3. RÃ©sultats observÃ©s. 4. InterprÃ©tation/conclusion." }
+    francais: { nom: "Français", points: 20, criteres: "Orthographe (4 pts), syntaxe (4 pts), cohérence (6 pts), pertinence (6 pts)", methodologie: "Introduction : amorce, présentation, problématique, plan. Développement : paragraphes structurés, connecteurs, exemples. Conclusion : rappel, synthèse, ouverture." },
+    maths: { nom: "Mathématiques", points: 20, criteres: "Démarche (5 pts), calculs (5 pts), rédaction (5 pts), résultat (5 pts)", methodologie: "1. Lire l'énoncé, repérer les données. 2. Choisir la propriété/théorème. 3. Rédiger les calculs étape par étape. 4. Vérifier la cohérence du résultat. 5. Conclure par une phrase." },
+    histoire: { nom: "Histoire-Géo & EMC", points: 20, criteres: "Connaissances (6 pts), analyse (6 pts), argumentation (4 pts), expression (4 pts)", methodologie: "Paragraphe argumenté : 1. Introduction (contexte, problématique). 2. Développement (thèse, arguments, exemples précis). 3. Conclusion (réponse, ouverture)." },
+    sciences: { nom: "Sciences", points: 20, criteres: "Connaissances (6 pts), démarche scientifique (6 pts), rigueur (4 pts), expression (4 pts)", methodologie: "Démarche scientifique : 1. Problématique/hypothèse. 2. Protocole expérimental. 3. Résultats observés. 4. Interprétation/conclusion." }
   };
 
   async function callCorrection(texte, matiere) {
-    // VÃ©rification accÃ¨s
+    // Vérification accès
     if (typeof aAccesComplet !== 'undefined' && !aAccesComplet()) {
       if (typeof afficherBlocageEssaiExpire !== 'undefined') afficherBlocageEssaiExpire();
       throw new Error('ACCES_BLOQUE');
     }
     const b = baremes[matiere];
-    const prompt = `Tu es correcteur expert du brevet des collÃ¨ges.
+    const prompt = `Tu es correcteur expert du brevet des collèges.
 
-MatiÃ¨re : ${b.nom}
-BarÃ¨me : ${b.criteres} â€” BAREME UNIVERSEL : 1/3 bonne rÃ©ponse + 1/3 rÃ©daction + 1/3 justification.
-MÃ©thodologie attendue : ${b.methodologie}
+Matière : ${b.nom}
+Barème : ${b.criteres} — BAREME UNIVERSEL : 1/3 bonne réponse + 1/3 rédaction + 1/3 justification.
+Méthodologie attendue : ${b.methodologie}
 
-Texte de l'Ã©lÃ¨ve :
+Texte de l'élève :
 ${texte}
 
-RÃ©ponds UNIQUEMENT en JSON (sans texte avant ou aprÃ¨s) :
+Réponds UNIQUEMENT en JSON (sans texte avant ou après) :
 {
   "note": X,
-  "detail_bareme": "rÃ©ponse X/3 - rÃ©daction X/3 - justification X/3",
+  "detail_bareme": "réponse X/3 - rédaction X/3 - justification X/3",
   "appreciation": "...",
   "erreurs": ["erreur 1", "erreur 2"],
   "conseilsMethodologiques": ["conseil 1", "conseil 2"],
@@ -141,14 +141,14 @@ RÃ©ponds UNIQUEMENT en JSON (sans texte avant ou aprÃ¨s) :
       const json = JSON.parse(correction);
       const b = baremes[matiere];
       resultDiv.innerHTML = `
-        <div class="note">ðŸ“Š Note : ${json.note}/${b.points}</div>
-        <div style="margin: 0.5rem 0;"><strong>ðŸ‘ ApprÃ©ciation :</strong> ${json.appreciation || "..."}</div>
+        <div class="note">📊 Note : ${json.note}/${b.points}</div>
+        <div style="margin: 0.5rem 0;"><strong>👍 Appréciation :</strong> ${json.appreciation || "..."}</div>
         <hr style="border-color:#333; margin:0.5rem 0;">
-        <strong>âš ï¸ Erreurs dÃ©tectÃ©es :</strong>
+        <strong>⚠️ Erreurs détectées :</strong>
         <ul>${(json.erreurs || []).map(e => `<li>${e}</li>`).join('') || "<li>Aucune erreur majeure</li>"}</ul>
-        <strong>ðŸ’¡ Conseils mÃ©thodologiques (${b.nom}) :</strong>
-        <ul>${(json.conseilsMethodologiques || []).map(c => `<li>${c}</li>`).join('') || "<li>Relisez votre texte Ã  voix haute.</li>"}</ul>
-        <strong>âœï¸ Version corrigÃ©e :</strong><br>
+        <strong>💡 Conseils méthodologiques (${b.nom}) :</strong>
+        <ul>${(json.conseilsMethodologiques || []).map(c => `<li>${c}</li>`).join('') || "<li>Relisez votre texte à voix haute.</li>"}</ul>
+        <strong>✍️ Version corrigée :</strong><br>
         <div style="background:#0a0a0f; padding:0.8rem; border-radius:0.8rem; margin-top:0.5rem;">${(json.versionCorrigee || "Non disponible").replace(/\n/g, '<br>')}</div>
       `;
     } catch(e) {
@@ -159,7 +159,7 @@ RÃ©ponds UNIQUEMENT en JSON (sans texte avant ou aprÃ¨s) :
 
   document.getElementById("corrigerBtn").addEventListener("click", async () => {
     const texte = document.getElementById("userTexte").value.trim();
-    if (texte === "") { alert("Veuillez Ã©crire un texte Ã  corriger."); return; }
+    if (texte === "") { alert("Veuillez écrire un texte à corriger."); return; }
     const matiere = document.getElementById("matiereSelect").value;
     document.getElementById("loading").style.display = "block";
     document.getElementById("resultat").style.display = "none";

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ðŸŽ¤ Oral Blanc Brevet Â· IA + Fiche de rÃ©vision</title>
+<title>🎤 Oral Blanc Brevet · IA + Fiche de révision</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -68,31 +68,31 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </head>
 <body>
 <div id="home">
-  <div class="badge">ðŸŽ¤ Brevet Blanc 2026 Â· Correcteur IA</div>
-  <h1>Oral Blanc <em>Â· 3 + 7 questions</em></h1>
-  <p class="sub">3 questions sur VOTRE exposÃ© Â· 7 questions sur le thÃ¨me (hors exposÃ©)<br>L'IA corrige, note et conseille Â· PDF avec corrections modÃ¨les</p>
+  <div class="badge">🎤 Brevet Blanc 2026 · Correcteur IA</div>
+  <h1>Oral Blanc <em>· 3 + 7 questions</em></h1>
+  <p class="sub">3 questions sur VOTRE exposé · 7 questions sur le thème (hors exposé)<br>L'IA corrige, note et conseille · PDF avec corrections modèles</p>
   <div class="cards-container">
     <div class="candidate-card eleve1" onclick="selectCandidate('eleve1')">
-      <div class="candidate-name">ðŸ‘¤ Ã‰lÃ¨ve 1</div>
-      <div class="candidate-theme">Choisissez votre thÃ¨me et rÃ©digez votre exposÃ©</div>
+      <div class="candidate-name">👤 Élève 1</div>
+      <div class="candidate-theme">Choisissez votre thème et rédigez votre exposé</div>
     </div>
     <div class="candidate-card eleve2" onclick="selectCandidate('eleve2')">
-      <div class="candidate-name">ðŸ‘¤ Ã‰lÃ¨ve 2</div>
-      <div class="candidate-theme">Choisissez votre thÃ¨me et rÃ©digez votre exposÃ©</div>
+      <div class="candidate-name">👤 Élève 2</div>
+      <div class="candidate-theme">Choisissez votre thème et rédigez votre exposé</div>
     </div>
   </div>
 </div>
 
 <div id="oral-page">
   <div class="oral-header">
-    <div><strong id="oral-candidate"></strong><br><span id="oral-theme" style="font-size:11px;color:var(--muted);">PrÃ©parez votre exposÃ©</span></div>
-    <button class="back-btn" onclick="goHome()">â† Retour accueil</button>
+    <div><strong id="oral-candidate"></strong><br><span id="oral-theme" style="font-size:11px;color:var(--muted);">Préparez votre exposé</span></div>
+    <button class="back-btn" onclick="goHome()">← Retour accueil</button>
   </div>
   <div class="chrono-bar">
-    <span>â± Chrono exposÃ© (5 min)</span>
+    <span>⏱ Chrono exposé (5 min)</span>
     <div class="chrono-time" id="chrono">5:00</div>
-    <div><button class="chrono-btn" onclick="startChrono()">â–¶ DÃ©marrer</button>
-    <button class="chrono-btn" onclick="resetChrono()">â†º Reset</button></div>
+    <div><button class="chrono-btn" onclick="startChrono()">▶ Démarrer</button>
+    <button class="chrono-btn" onclick="resetChrono()">↺ Reset</button></div>
   </div>
   <div class="s-body" id="oral-body"></div>
 </div>
@@ -103,7 +103,7 @@ const PROXY = 'https://script.google.com/macros/s/AKfycbxzUhsZ4ewxV_zGsu5h_L2ery
 
 async function callIA(prompt, system) {
   const timeout = new Promise((_, reject) =>
-    setTimeout(() => reject(new Error('â± Timeout (45s) â€” rÃ©essaie dans quelques secondes.')), 45000)
+    setTimeout(() => reject(new Error('⏱ Timeout (45s) — réessaie dans quelques secondes.')), 45000)
   );
   const payload = JSON.stringify({
     userId: localStorage.getItem('user_id') || 'anon',
@@ -122,7 +122,7 @@ async function callIA(prompt, system) {
   }).then(r => r.json())
   .then(d => {
     if (d.success && d.content) return d.content;
-    throw new Error(d.error || 'RÃ©ponse inattendue');
+    throw new Error(d.error || 'Réponse inattendue');
   });
   return Promise.race([req, timeout]);
 }
@@ -144,7 +144,7 @@ function selectCandidate(name) {
   currentCandidate = name;
   document.getElementById('home').style.display = 'none';
   document.getElementById('oral-page').style.display = 'block';
-  document.getElementById('oral-candidate').innerHTML = name === 'eleve1' ? 'ðŸ‘¤ Ã‰lÃ¨ve 1' : 'ðŸ‘¤ Ã‰lÃ¨ve 2';
+  document.getElementById('oral-candidate').innerHTML = name === 'eleve1' ? '👤 Élève 1' : '👤 Élève 2';
   renderOralInterface();
   resetChrono();
 }
@@ -152,26 +152,26 @@ function selectCandidate(name) {
 function renderOralInterface() {
   const html = `
     <div class="expose-section">
-      <div class="section-title">ðŸŽ¤ 1. Ã‰CRIVEZ OU COLLEZ VOTRE EXPOSÃ‰ (5 min)</div>
+      <div class="section-title">🎤 1. ÉCRIVEZ OU COLLEZ VOTRE EXPOSÉ (5 min)</div>
       <div class="texte-box" style="background:var(--bg3);padding:14px;border-radius:var(--r-sm);margin-bottom:16px;font-size:13px;">
-        <strong>ðŸ“Œ Consigne :</strong> RÃ©digez votre exposÃ© (environ 200-400 mots). Introduisez votre thÃ¨me, dÃ©veloppez 2-3 idÃ©es principales, concluez.
+        <strong>📌 Consigne :</strong> Rédigez votre exposé (environ 200-400 mots). Introduisez votre thème, développez 2-3 idées principales, concluez.
       </div>
-      <textarea id="expose-text" class="answer-ta" placeholder="Collez ou rÃ©digez ici votre exposÃ©..."></textarea>
-      <button class="ai-btn" onclick="analyserExposeEtGenererQuestions()">ðŸ¤– IA : Analyser mon exposÃ© + gÃ©nÃ©rer les 10 questions</button>
+      <textarea id="expose-text" class="answer-ta" placeholder="Collez ou rédigez ici votre exposé..."></textarea>
+      <button class="ai-btn" onclick="analyserExposeEtGenererQuestions()">🤖 IA : Analyser mon exposé + générer les 10 questions</button>
       <div id="expose-feedback" class="ai-feedback"></div>
     </div>
     <div id="questions-container" style="display:none;">
       <div class="questions-block">
         <div class="q-section">
-          <h3>ðŸ“– PARTIE 1 Â· Questions SUR votre exposÃ© (3 questions)</h3>
+          <h3>📖 PARTIE 1 · Questions SUR votre exposé (3 questions)</h3>
           <div id="content-questions"></div>
         </div>
         <div class="q-section">
-          <h3>ðŸŒ PARTIE 2 Â· Questions de culture gÃ©nÃ©rale sur le thÃ¨me (hors exposÃ© â€” 7 questions)</h3>
+          <h3>🌍 PARTIE 2 · Questions de culture générale sur le thème (hors exposé — 7 questions)</h3>
           <div id="culture-questions"></div>
         </div>
-        <button class="generate-pdf" onclick="genererPDFComplet()">ðŸ“„ GÃ©nÃ©rer PDF (exposÃ© + corrections IA + rÃ©ponses modÃ¨les)</button>
-        <div style="margin-top:16px;text-align:center;"><button class="chrono-btn" onclick="sauvegarderReponses()">ðŸ’¾ Sauvegarder mes rÃ©ponses</button></div>
+        <button class="generate-pdf" onclick="genererPDFComplet()">📄 Générer PDF (exposé + corrections IA + réponses modèles)</button>
+        <div style="margin-top:16px;text-align:center;"><button class="chrono-btn" onclick="sauvegarderReponses()">💾 Sauvegarder mes réponses</button></div>
       </div>
     </div>
   `;
@@ -181,18 +181,18 @@ function renderOralInterface() {
 async function analyserExposeEtGenererQuestions() {
   const exposeText = document.getElementById('expose-text')?.value;
   if (!exposeText || exposeText.trim().length < 100) {
-    showToast("âŒ Votre exposÃ© est trop court (min 100 caractÃ¨res).", "err");
+    showToast("❌ Votre exposé est trop court (min 100 caractères).", "err");
     return;
   }
   currentExpose = exposeText;
-  showToast("ðŸ¤– IA analyse l'exposÃ© et gÃ©nÃ¨re les questions...", "ok");
+  showToast("🤖 IA analyse l'exposé et génère les questions...", "ok");
   await new Promise(r => setTimeout(r, 800));
   
-  // GÃ©nÃ©rer 3 questions sur l'exposÃ© via IA
+  // Générer 3 questions sur l'exposé via IA
   generatedContentQuestions = await genererQuestionsSurExposeParIA(exposeText);
   contentReponsesModeles = await Promise.all(generatedContentQuestions.map((q, i) => genererReponseModeleExposeParIA(q, exposeText)));
   
-  // GÃ©nÃ©rer 7 questions de culture gÃ©nÃ©rale sur le thÃ¨me via IA
+  // Générer 7 questions de culture générale sur le thème via IA
   const theme = extraireTheme(exposeText);
   selectedCultureQuestions = await genererQuestionsCultureParIA(theme);
   cultureReponsesModeles = await Promise.all(selectedCultureQuestions.map((q) => genererReponseModeleCultureParIA(q)));
@@ -200,20 +200,20 @@ async function analyserExposeEtGenererQuestions() {
   const evaluationExpose = evaluerExpose(exposeText);
   const fbDiv = document.getElementById('expose-feedback');
   fbDiv.style.display = 'block';
-  fbDiv.innerHTML = `<strong>âœ¨ Analyse IA de votre exposÃ©</strong><br><br>${evaluationExpose.feedback}<br><br><strong>ðŸ“Š Note estimÃ©e : ${evaluationExpose.note}/20</strong>`;
+  fbDiv.innerHTML = `<strong>✨ Analyse IA de votre exposé</strong><br><br>${evaluationExpose.feedback}<br><br><strong>📊 Note estimée : ${evaluationExpose.note}/20</strong>`;
   
   afficherQuestions();
-  showToast("âœ“ Questions gÃ©nÃ©rÃ©es ! RÃ©pondez, l'IA corrigera chaque rÃ©ponse.", "ok");
+  showToast("✓ Questions générées ! Répondez, l'IA corrigera chaque réponse.", "ok");
 }
 
 function extraireTheme(expose) {
-  // Extrait les 100 premiers caractÃ¨res comme thÃ¨me approximatif
+  // Extrait les 100 premiers caractères comme thème approximatif
   return expose.substring(0, 150);
 }
 
 async function genererQuestionsSurExposeParIA(expose) {
-  const system = "Tu es examinateur pour l'oral du brevet. GÃ©nÃ¨re 3 questions prÃ©cises sur l'exposÃ© que tu vas lire. Les questions doivent porter sur le contenu, les arguments et les exemples de l'exposÃ©. RÃ©ponds UNIQUEMENT en JSON : {\"questions\": [\"Q1\", \"Q2\", \"Q3\"]}";
-  const prompt = "Voici l'exposÃ© de l'Ã©lÃ¨ve :\n" + expose + "\n\nGÃ©nÃ¨re 3 questions sur cet exposÃ©.";
+  const system = "Tu es examinateur pour l'oral du brevet. Génère 3 questions précises sur l'exposé que tu vas lire. Les questions doivent porter sur le contenu, les arguments et les exemples de l'exposé. Réponds UNIQUEMENT en JSON : {\"questions\": [\"Q1\", \"Q2\", \"Q3\"]}";
+  const prompt = "Voici l'exposé de l'élève :\n" + expose + "\n\nGénère 3 questions sur cet exposé.";
   try {
     const rep = await callIA(prompt, system);
     const json = safeJSON(rep);
@@ -222,26 +222,26 @@ async function genererQuestionsSurExposeParIA(expose) {
   } catch(e) {
     console.error(e);
     return [
-      "Quel est le sujet principal de votre exposÃ© ?",
-      "Quels arguments principaux avez-vous dÃ©veloppÃ©s ?",
-      "Quels exemples avez-vous citÃ©s pour illustrer votre propos ?"
+      "Quel est le sujet principal de votre exposé ?",
+      "Quels arguments principaux avez-vous développés ?",
+      "Quels exemples avez-vous cités pour illustrer votre propos ?"
     ];
   }
 }
 
 async function genererReponseModeleExposeParIA(question, expose) {
-  const system = "Tu es professeur. Donne une rÃ©ponse modÃ¨le (2-3 lignes) Ã  cette question sur l'exposÃ© de l'Ã©lÃ¨ve. Sois prÃ©cis et pÃ©dagogique. RÃ©ponds en texte brut.";
-  const prompt = "ExposÃ© : " + expose + "\nQuestion : " + question + "\nRÃ©ponse modÃ¨le :";
+  const system = "Tu es professeur. Donne une réponse modèle (2-3 lignes) à cette question sur l'exposé de l'élève. Sois précis et pédagogique. Réponds en texte brut.";
+  const prompt = "Exposé : " + expose + "\nQuestion : " + question + "\nRéponse modèle :";
   try {
     return await callIA(prompt, system);
   } catch(e) {
-    return "RÃ©ponse modÃ¨le non disponible. Relisez votre exposÃ© pour rÃ©pondre prÃ©cisÃ©ment.";
+    return "Réponse modèle non disponible. Relisez votre exposé pour répondre précisément.";
   }
 }
 
 async function genererQuestionsCultureParIA(theme) {
-  const system = "Tu es examinateur pour l'oral du brevet. GÃ©nÃ¨re 7 questions de culture gÃ©nÃ©rale sur le thÃ¨me suivant. Les questions doivent Ãªtre variÃ©es (dÃ©finitions, exemples, comparaisons, actualitÃ©, histoire, enjeux). RÃ©ponds UNIQUEMENT en JSON : {\"questions\": [\"Q1\", \"Q2\", \"Q3\", \"Q4\", \"Q5\", \"Q6\", \"Q7\"]}";
-  const prompt = "ThÃ¨me approximatif de l'exposÃ© (premiers mots) : " + theme + "\n\nGÃ©nÃ¨re 7 questions de culture gÃ©nÃ©rale sur ce thÃ¨me.";
+  const system = "Tu es examinateur pour l'oral du brevet. Génère 7 questions de culture générale sur le thème suivant. Les questions doivent être variées (définitions, exemples, comparaisons, actualité, histoire, enjeux). Réponds UNIQUEMENT en JSON : {\"questions\": [\"Q1\", \"Q2\", \"Q3\", \"Q4\", \"Q5\", \"Q6\", \"Q7\"]}";
+  const prompt = "Thème approximatif de l'exposé (premiers mots) : " + theme + "\n\nGénère 7 questions de culture générale sur ce thème.";
   try {
     const rep = await callIA(prompt, system);
     const json = safeJSON(rep);
@@ -250,11 +250,11 @@ async function genererQuestionsCultureParIA(theme) {
   } catch(e) {
     console.error(e);
     return [
-      "Pouvez-vous dÃ©finir le thÃ¨me central de votre exposÃ© ?",
-      "Quels sont les enjeux actuels liÃ©s Ã  ce sujet ?",
-      "Citez un exemple concret illustrant ce thÃ¨me.",
-      "Quelles sont les idÃ©es reÃ§ues sur ce sujet ?",
-      "Comment ce thÃ¨me a-t-il Ã©voluÃ© dans l'histoire ?",
+      "Pouvez-vous définir le thème central de votre exposé ?",
+      "Quels sont les enjeux actuels liés à ce sujet ?",
+      "Citez un exemple concret illustrant ce thème.",
+      "Quelles sont les idées reçues sur ce sujet ?",
+      "Comment ce thème a-t-il évolué dans l'histoire ?",
       "Quelles solutions ou alternatives existent ?",
       "Pourquoi ce sujet est-il important aujourd'hui ?"
     ];
@@ -262,8 +262,8 @@ async function genererQuestionsCultureParIA(theme) {
 }
 
 async function genererReponseModeleCultureParIA(question) {
-  const system = "Tu es professeur. Donne une rÃ©ponse modÃ¨le (2-3 lignes) Ã  cette question de culture gÃ©nÃ©rale. Sois prÃ©cis et pÃ©dagogique. RÃ©ponds en texte brut.";
-  const prompt = "Question : " + question + "\nRÃ©ponse modÃ¨le :";
+  const system = "Tu es professeur. Donne une réponse modèle (2-3 lignes) à cette question de culture générale. Sois précis et pédagogique. Réponds en texte brut.";
+  const prompt = "Question : " + question + "\nRéponse modèle :";
   try {
     return await callIA(prompt, system);
   } catch(e) {
@@ -277,10 +277,10 @@ function evaluerExpose(expose) {
   if (mots > 150) score += 2;
   if (mots > 300) score += 2;
   if (expose.includes("introduction") || expose.includes("d'abord") || expose.includes("tout d'abord")) score += 2;
-  if (expose.includes("conclusion") || expose.includes("pour conclure") || expose.includes("en rÃ©sumÃ©")) score += 2;
+  if (expose.includes("conclusion") || expose.includes("pour conclure") || expose.includes("en résumé")) score += 2;
   if (expose.includes("exemple") || expose.includes("par exemple")) score += 2;
   score = Math.min(20, Math.max(0, score));
-  let feedback = score >= 15 ? "ExposÃ© solide ! Structure claire et contenu riche." : (score >= 11 ? "ExposÃ© correct, mais ajoutez plus d'exemples prÃ©cis." : "Travaillez la structure (intro/dÃ©veloppement/conclusion).");
+  let feedback = score >= 15 ? "Exposé solide ! Structure claire et contenu riche." : (score >= 11 ? "Exposé correct, mais ajoutez plus d'exemples précis." : "Travaillez la structure (intro/développement/conclusion).");
   return { feedback, note: score };
 }
 
@@ -295,8 +295,8 @@ function afficherQuestions() {
       <div class="q-item" id="cq-${idx}">
         <div class="q-text"><strong>Q${idx+1}</strong> ${q}</div>
         <div class="q-answer">
-          <textarea id="ans-c-${idx}" placeholder="Votre rÃ©ponse..."></textarea>
-          <div><button class="chrono-btn" style="background:rgba(94,207,177,0.1);color:var(--teal);margin-top:8px;" onclick="corrigerReponse('c', ${idx})">âœ… IA : Corriger cette rÃ©ponse</button> <span id="score-c-${idx}" class="q-score"></span></div>
+          <textarea id="ans-c-${idx}" placeholder="Votre réponse..."></textarea>
+          <div><button class="chrono-btn" style="background:rgba(94,207,177,0.1);color:var(--teal);margin-top:8px;" onclick="corrigerReponse('c', ${idx})">✅ IA : Corriger cette réponse</button> <span id="score-c-${idx}" class="q-score"></span></div>
           <div id="fb-c-${idx}" class="q-feedback"></div>
         </div>
       </div>
@@ -310,8 +310,8 @@ function afficherQuestions() {
       <div class="q-item" id="cuq-${idx}">
         <div class="q-text"><strong>Q${idx+4}</strong> ${q}</div>
         <div class="q-answer">
-          <textarea id="ans-u-${idx}" placeholder="Votre rÃ©ponse..."></textarea>
-          <div><button class="chrono-btn" style="background:rgba(94,207,177,0.1);color:var(--teal);margin-top:8px;" onclick="corrigerReponse('u', ${idx})">âœ… IA : Corriger cette rÃ©ponse</button> <span id="score-u-${idx}" class="q-score"></span></div>
+          <textarea id="ans-u-${idx}" placeholder="Votre réponse..."></textarea>
+          <div><button class="chrono-btn" style="background:rgba(94,207,177,0.1);color:var(--teal);margin-top:8px;" onclick="corrigerReponse('u', ${idx})">✅ IA : Corriger cette réponse</button> <span id="score-u-${idx}" class="q-score"></span></div>
           <div id="fb-u-${idx}" class="q-feedback"></div>
         </div>
       </div>
@@ -337,12 +337,12 @@ async function corrigerReponse(type, idx) {
     reponse = document.getElementById(`ans-u-${idx}`)?.value;
     modele = cultureReponsesModeles[idx];
   }
-  if (!reponse || reponse.trim().length < 10) { showToast("Ã‰crivez une rÃ©ponse plus dÃ©veloppÃ©e (min 10 caractÃ¨res)", "err"); return; }
-  showToast("ðŸ¤– IA corrige...", "ok");
+  if (!reponse || reponse.trim().length < 10) { showToast("Écrivez une réponse plus développée (min 10 caractères)", "err"); return; }
+  showToast("🤖 IA corrige...", "ok");
   
-  // Appel IA pour correction avancÃ©e
-  const system = "Tu es correcteur pour l'oral du brevet. Ã‰value la rÃ©ponse de l'Ã©lÃ¨ve (note sur 10), donne un feedback et une rÃ©ponse modÃ¨le courte. RÃ©ponds UNIQUEMENT en JSON : {\"note\":X,\"feedback\":\"...\",\"reponse_modele\":\"...\"}";
-  const prompt = "Question : " + (type === 'c' ? generatedContentQuestions[idx] : selectedCultureQuestions[idx]) + "\nRÃ©ponse Ã©lÃ¨ve : " + reponse + "\nRÃ©ponse modÃ¨le attendue : " + modele;
+  // Appel IA pour correction avancée
+  const system = "Tu es correcteur pour l'oral du brevet. Évalue la réponse de l'élève (note sur 10), donne un feedback et une réponse modèle courte. Réponds UNIQUEMENT en JSON : {\"note\":X,\"feedback\":\"...\",\"reponse_modele\":\"...\"}";
+  const prompt = "Question : " + (type === 'c' ? generatedContentQuestions[idx] : selectedCultureQuestions[idx]) + "\nRéponse élève : " + reponse + "\nRéponse modèle attendue : " + modele;
   let note = 5, feedback = "", reponse_modele = modele;
   
   try {
@@ -359,14 +359,14 @@ async function corrigerReponse(type, idx) {
     if (reponse.length > 50) note = 7;
     else if (reponse.length > 20) note = 5;
     else note = 3;
-    feedback = note >= 7 ? "Bonne rÃ©ponse !" : (note >= 5 ? "RÃ©ponse correcte mais Ã  approfondir." : "Revoir la rÃ©ponse modÃ¨le ci-dessous.");
+    feedback = note >= 7 ? "Bonne réponse !" : (note >= 5 ? "Réponse correcte mais à approfondir." : "Revoir la réponse modèle ci-dessous.");
   }
   
   const fbDiv = document.getElementById(`fb-${type}-${idx}`);
   const scoreSpan = document.getElementById(`score-${type}-${idx}`);
   fbDiv.style.display = 'block';
-  fbDiv.innerHTML = `<strong>ðŸ¤– IA :</strong> ${feedback}<br><strong>Note : ${note}/10</strong><br><br><strong>âœ… RÃ©ponse modÃ¨le :</strong> ${reponse_modele}`;
-  scoreSpan.textContent = `ðŸŽ¯ ${note}/10`;
+  fbDiv.innerHTML = `<strong>🤖 IA :</strong> ${feedback}<br><strong>Note : ${note}/10</strong><br><br><strong>✅ Réponse modèle :</strong> ${reponse_modele}`;
+  scoreSpan.textContent = `🎯 ${note}/10`;
   
   if (type === 'c') localStorage.setItem(`oral_${currentCandidate}_content_${idx}`, reponse);
   else localStorage.setItem(`oral_${currentCandidate}_culture_${idx}`, reponse);
@@ -382,7 +382,7 @@ function sauvegarderReponses() {
     const val = document.getElementById(`ans-u-${i}`)?.value;
     if (val) localStorage.setItem(`oral_${currentCandidate}_culture_${i}`, val);
   }
-  showToast("âœ… RÃ©ponses sauvegardÃ©es", "ok");
+  showToast("✅ Réponses sauvegardées", "ok");
 }
 
 function genererPDFComplet() {
@@ -392,12 +392,12 @@ function genererPDFComplet() {
   
   doc.setFont("helvetica");
   doc.setFontSize(16);
-  doc.text(`Oral Blanc Â· ${currentCandidate === 'eleve1' ? 'Ã‰lÃ¨ve 1' : 'Ã‰lÃ¨ve 2'}`, 15, y);
+  doc.text(`Oral Blanc · ${currentCandidate === 'eleve1' ? 'Élève 1' : 'Élève 2'}`, 15, y);
   y += 8;
   doc.setFontSize(9);
   doc.text(`Date : ${new Date().toLocaleString()}`, 15, y);
   y += 6;
-  doc.text(`ExposÃ© soumis :`, 15, y);
+  doc.text(`Exposé soumis :`, 15, y);
   y += 5;
   const exposeLines = doc.splitTextToSize(currentExpose, 170);
   doc.text(exposeLines, 15, y);
@@ -405,35 +405,35 @@ function genererPDFComplet() {
   
   doc.setFontSize(11);
   doc.setTextColor(106, 180, 245);
-  doc.text("ðŸ“ CORRECTION IA DE L'EXPOSÃ‰", 15, y);
+  doc.text("📝 CORRECTION IA DE L'EXPOSÉ", 15, y);
   y += 5;
   doc.setFontSize(9);
   doc.setTextColor(200, 200, 200);
   const evalExpose = evaluerExpose(currentExpose);
-  const correctionTexte = `Note estimÃ©e : ${evalExpose.note}/20\n${evalExpose.feedback}`;
+  const correctionTexte = `Note estimée : ${evalExpose.note}/20\n${evalExpose.feedback}`;
   const correctionLines = doc.splitTextToSize(correctionTexte, 170);
   doc.text(correctionLines, 15, y);
   y += correctionLines.length * 5 + 10;
   
   doc.setFontSize(11);
   doc.setTextColor(106, 180, 245);
-  doc.text("â“ CORRECTIONS DES 10 QUESTIONS", 15, y);
+  doc.text("❓ CORRECTIONS DES 10 QUESTIONS", 15, y);
   y += 6;
   
   for (let i = 0; i < generatedContentQuestions.length; i++) {
     if (y > 270) { doc.addPage(); y = 20; }
-    const reponse = document.getElementById(`ans-c-${i}`)?.value || "(non rÃ©pondue)";
+    const reponse = document.getElementById(`ans-c-${i}`)?.value || "(non répondue)";
     const note = localStorage.getItem(`oral_${currentCandidate}_c_${i}_note`) || "?";
     doc.setFontSize(9);
     doc.setTextColor(232, 200, 122);
-    doc.text(`Q${i+1} (sur l'exposÃ©) : ${generatedContentQuestions[i]}`, 15, y);
+    doc.text(`Q${i+1} (sur l'exposé) : ${generatedContentQuestions[i]}`, 15, y);
     y += 5;
     doc.setTextColor(200, 200, 200);
-    const repLines = doc.splitTextToSize(`Votre rÃ©ponse : ${reponse.substring(0, 350)}`, 170);
+    const repLines = doc.splitTextToSize(`Votre réponse : ${reponse.substring(0, 350)}`, 170);
     doc.text(repLines, 15, y);
     y += repLines.length * 5 + 2;
     doc.setTextColor(126, 207, 138);
-    const modeleLines = doc.splitTextToSize(`âœ… RÃ©ponse modÃ¨le : ${contentReponsesModeles[i]}`, 170);
+    const modeleLines = doc.splitTextToSize(`✅ Réponse modèle : ${contentReponsesModeles[i]}`, 170);
     doc.text(modeleLines, 15, y);
     y += modeleLines.length * 5 + 2;
     doc.text(`Note IA : ${note}/10`, 15, y);
@@ -442,18 +442,18 @@ function genererPDFComplet() {
   
   for (let i = 0; i < selectedCultureQuestions.length; i++) {
     if (y > 270) { doc.addPage(); y = 20; }
-    const reponse = document.getElementById(`ans-u-${i}`)?.value || "(non rÃ©pondue)";
+    const reponse = document.getElementById(`ans-u-${i}`)?.value || "(non répondue)";
     const note = localStorage.getItem(`oral_${currentCandidate}_u_${i}_note`) || "?";
     doc.setFontSize(9);
     doc.setTextColor(232, 200, 122);
     doc.text(`Q${i+4} (culture) : ${selectedCultureQuestions[i]}`, 15, y);
     y += 5;
     doc.setTextColor(200, 200, 200);
-    const repLines = doc.splitTextToSize(`Votre rÃ©ponse : ${reponse.substring(0, 350)}`, 170);
+    const repLines = doc.splitTextToSize(`Votre réponse : ${reponse.substring(0, 350)}`, 170);
     doc.text(repLines, 15, y);
     y += repLines.length * 5 + 2;
     doc.setTextColor(126, 207, 138);
-    const modeleLines = doc.splitTextToSize(`âœ… RÃ©ponse modÃ¨le : ${cultureReponsesModeles[i]}`, 170);
+    const modeleLines = doc.splitTextToSize(`✅ Réponse modèle : ${cultureReponsesModeles[i]}`, 170);
     doc.text(modeleLines, 15, y);
     y += modeleLines.length * 5 + 2;
     doc.text(`Note IA : ${note}/10`, 15, y);
@@ -461,10 +461,10 @@ function genererPDFComplet() {
   }
   
   doc.save(`oral_${currentCandidate}_corrections_completes.pdf`);
-  showToast("ðŸ“„ PDF gÃ©nÃ©rÃ© avec toutes les corrections et rÃ©ponses modÃ¨les", "ok");
+  showToast("📄 PDF généré avec toutes les corrections et réponses modèles", "ok");
 }
 
-function startChrono() { if (running) return; running = true; chronoInterval = setInterval(() => { if (chronoSecs <= 0) { clearInterval(chronoInterval); running = false; showToast("â± Temps Ã©coulÃ© !", "err"); return; } chronoSecs--; updateChrono(); }, 1000); }
+function startChrono() { if (running) return; running = true; chronoInterval = setInterval(() => { if (chronoSecs <= 0) { clearInterval(chronoInterval); running = false; showToast("⏱ Temps écoulé !", "err"); return; } chronoSecs--; updateChrono(); }, 1000); }
 function resetChrono() { clearInterval(chronoInterval); running = false; chronoSecs = 300; updateChrono(); }
 function updateChrono() { const m = Math.floor(chronoSecs / 60); const s = chronoSecs % 60; document.getElementById('chrono').textContent = `${m}:${String(s).padStart(2, '0')}`; }
 function goHome() { document.getElementById('oral-page').style.display = 'none'; document.getElementById('home').style.display = 'flex'; if (chronoInterval) clearInterval(chronoInterval); running = false; }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brevet 2026 â€” Hub</title>
+<title>Brevet 2026 — Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -31,7 +31,7 @@ body {
   min-height: 100vh;
 }
 
-/* â”€â”€ HEADER â”€â”€ */
+/* ── HEADER ── */
 .header {
   max-width: 1100px;
   margin: 0 auto;
@@ -80,7 +80,7 @@ body {
 .countdown-label { font-size: 11px; color: var(--dim); margin-top: 4px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .08em; }
 .countdown-date { font-size: 11px; color: var(--muted); margin-top: 6px; }
 
-/* â”€â”€ MAIN â”€â”€ */
+/* ── MAIN ── */
 .main { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
 
 /* ELEVE TABS */
@@ -254,11 +254,11 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <div class="header">
   <div class="brand">
     <div class="brand-eye">Brevet 2026</div>
-    <h1 class="brand-h1">Hub de rÃ©vision<br><em>DNB 2026</em></h1>
-    <p class="brand-sub">Flashcards Â· Automatismes Â· Sujets officiels Â· Correction IA Â· Suivi parental</p>
+    <h1 class="brand-h1">Hub de révision<br><em>DNB 2026</em></h1>
+    <p class="brand-sub">Flashcards · Automatismes · Sujets officiels · Correction IA · Suivi parental</p>
   </div>
   <div class="countdown">
-    <div class="countdown-num" id="joursRestants">â€”</div>
+    <div class="countdown-num" id="joursRestants">—</div>
     <div class="countdown-label">jours restants</div>
     <div class="countdown-date">DNB : 26 juin 2026</div>
   </div>
@@ -268,204 +268,204 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
   <!-- ELEVE TABS -->
   <div class="eleve-tabs" style="margin-top:28px">
-    <button class="etab e1" id="btn1" onclick="setEleve('eleve1')">ðŸ‘¤ Ã‰lÃ¨ve 1</button>
-    <button class="etab e2" id="btn2" onclick="setEleve('eleve2')">ðŸ‘¤ Ã‰lÃ¨ve 2</button>
+    <button class="etab e1" id="btn1" onclick="setEleve('eleve1')">👤 Élève 1</button>
+    <button class="etab e2" id="btn2" onclick="setEleve('eleve2')">👤 Élève 2</button>
   </div>
 
   <!-- ALERTE INACTIVITE -->
-  <div class="alerte hidden" id="alerteInactivite">âš ï¸ <span id="alerteMsg"></span></div>
+  <div class="alerte hidden" id="alerteInactivite">⚠️ <span id="alerteMsg"></span></div>
 
   <!-- STATS RAPIDES -->
   <div class="stats-row" id="statsRow">
-    <div class="stat-pill"><div class="stat-val" id="statStreak" style="color:var(--gold)">â€”</div><div class="stat-label">ðŸ”¥ Streak</div></div>
-    <div class="stat-pill"><div class="stat-val" id="statSessions" style="color:var(--teal)">â€”</div><div class="stat-label">Sessions</div></div>
-    <div class="stat-pill"><div class="stat-val" id="statMoyenne" style="color:var(--violet)">â€”</div><div class="stat-label">Moyenne</div></div>
-    <div class="stat-pill"><div class="stat-val" id="statSujets" style="color:var(--blue)">â€”</div><div class="stat-label">Sujets faits</div></div>
+    <div class="stat-pill"><div class="stat-val" id="statStreak" style="color:var(--gold)">—</div><div class="stat-label">🔥 Streak</div></div>
+    <div class="stat-pill"><div class="stat-val" id="statSessions" style="color:var(--teal)">—</div><div class="stat-label">Sessions</div></div>
+    <div class="stat-pill"><div class="stat-val" id="statMoyenne" style="color:var(--violet)">—</div><div class="stat-label">Moyenne</div></div>
+    <div class="stat-pill"><div class="stat-val" id="statSujets" style="color:var(--blue)">—</div><div class="stat-label">Sujets faits</div></div>
   </div>
 
   <!-- PROGRESSION PAR MATIERE -->
   <div style="margin-bottom:36px" id="progSection">
     <div class="prog-row">
-      <span style="min-width:80px;color:var(--teal)">ðŸ‡«ðŸ‡· FranÃ§ais</span>
+      <span style="min-width:80px;color:var(--teal)">🇫🇷 Français</span>
       <div class="prog-bar"><div class="prog-fill" id="progFr" style="width:0%;background:var(--teal)"></div></div>
-      <span id="progFrPct">â€”</span>
+      <span id="progFrPct">—</span>
     </div>
     <div class="prog-row">
-      <span style="min-width:80px;color:var(--gold)">ðŸ“ Maths</span>
+      <span style="min-width:80px;color:var(--gold)">📐 Maths</span>
       <div class="prog-bar"><div class="prog-fill" id="progMa" style="width:0%;background:var(--gold)"></div></div>
-      <span id="progMaPct">â€”</span>
+      <span id="progMaPct">—</span>
     </div>
     <div class="prog-row">
-      <span style="min-width:80px;color:#f5a623">ðŸŒ Hist-GÃ©o</span>
+      <span style="min-width:80px;color:#f5a623">🌍 Hist-Géo</span>
       <div class="prog-bar"><div class="prog-fill" id="progHi" style="width:0%;background:#f5a623"></div></div>
-      <span id="progHiPct">â€”</span>
+      <span id="progHiPct">—</span>
     </div>
     <div class="prog-row">
-      <span style="min-width:80px;color:var(--blue)">ðŸ”¬ Sciences</span>
+      <span style="min-width:80px;color:var(--blue)">🔬 Sciences</span>
       <div class="prog-bar"><div class="prog-fill" id="progSc" style="width:0%;background:var(--blue)"></div></div>
-      <span id="progScPct">â€”</span>
+      <span id="progScPct">—</span>
     </div>
   </div>
 
-  <!-- â”€â”€ RÃ‰VISIONS â”€â”€ -->
+  <!-- ── RÉVISIONS ── -->
   <div class="section">
     <div class="section-header">
-      <span class="section-icon">ðŸ“–</span>
-      <span class="section-title">Fiches de rÃ©vision</span>
-      <span class="section-desc">Notions en rouge Â· Flashcards interactives Â· PiÃ¨ges classiques</span>
+      <span class="section-icon">📖</span>
+      <span class="section-title">Fiches de révision</span>
+      <span class="section-desc">Notions en rouge · Flashcards interactives · Pièges classiques</span>
     </div>
     <div class="cards wide">
       <a href="revisions-francais.html" class="card fr">
-        <div class="card-icon">ðŸ‡«ðŸ‡·</div>
-        <div class="card-title">FranÃ§ais</div>
-        <div class="card-desc">26 chapitres Â· Notions clÃ©s en rouge Â· Flashcards cliquables</div>
+        <div class="card-icon">🇫🇷</div>
+        <div class="card-title">Français</div>
+        <div class="card-desc">26 chapitres · Notions clés en rouge · Flashcards cliquables</div>
         <div class="card-badge new">260 notions</div>
       </a>
       <a href="revisions-maths.html" class="card ma">
-        <div class="card-icon">ðŸ“</div>
-        <div class="card-title">MathÃ©matiques</div>
-        <div class="card-desc">26 chapitres Â· Formules Â· Erreurs classiques</div>
+        <div class="card-icon">📐</div>
+        <div class="card-title">Mathématiques</div>
+        <div class="card-desc">26 chapitres · Formules · Erreurs classiques</div>
         <div class="card-badge new">260 notions</div>
       </a>
       <a href="revisions-histgeo.html" class="card hi">
-        <div class="card-icon">ðŸŒ</div>
-        <div class="card-title">Histoire-GÃ©o-EMC</div>
-        <div class="card-desc">32 chapitres Â· Dates Â· RepÃ¨res Â· Notions clÃ©s</div>
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Histoire-Géo-EMC</div>
+        <div class="card-desc">32 chapitres · Dates · Repères · Notions clés</div>
         <div class="card-badge new">276 notions</div>
       </a>
       <a href="revisions-sciences.html" class="card sc">
-        <div class="card-icon">ðŸ”¬</div>
+        <div class="card-icon">🔬</div>
         <div class="card-title">Sciences</div>
-        <div class="card-desc">26 chapitres Â· Formules Â· DÃ©finitions Â· Lois</div>
+        <div class="card-desc">26 chapitres · Formules · Définitions · Lois</div>
         <div class="card-badge new">260 notions</div>
       </a>
     </div>
   </div>
 
-  <!-- â”€â”€ FLASHCARDS â”€â”€ -->
+  <!-- ── FLASHCARDS ── -->
   <div class="section">
     <div class="section-header">
-      <span class="section-icon">ðŸƒ</span>
+      <span class="section-icon">🃏</span>
       <span class="section-title">Flashcards</span>
-      <span class="section-desc">MÃ©morisation active Â· Score sauvegardÃ©</span>
+      <span class="section-desc">Mémorisation active · Score sauvegardé</span>
     </div>
     <div class="cards wide">
       <a href="flashcards-francais.html" class="card fr">
-        <div class="card-icon">ðŸ‡«ðŸ‡·</div>
-        <div class="card-title">FranÃ§ais</div>
-        <div class="card-desc">26 chapitres Â· 260 cartes Â· Score par chapitre</div>
+        <div class="card-icon">🇫🇷</div>
+        <div class="card-title">Français</div>
+        <div class="card-desc">26 chapitres · 260 cartes · Score par chapitre</div>
         <div class="card-badge new">260 cartes</div>
       </a>
       <a href="flashcards-maths.html" class="card ma">
-        <div class="card-icon">ðŸ“</div>
-        <div class="card-title">MathÃ©matiques</div>
-        <div class="card-desc">26 chapitres Â· 260 cartes Â· Formules et dÃ©finitions</div>
+        <div class="card-icon">📐</div>
+        <div class="card-title">Mathématiques</div>
+        <div class="card-desc">26 chapitres · 260 cartes · Formules et définitions</div>
         <div class="card-badge new">260 cartes</div>
       </a>
       <a href="flashcards-histgeo.html" class="card hi">
-        <div class="card-icon">ðŸŒ</div>
-        <div class="card-title">Histoire-GÃ©o-EMC</div>
-        <div class="card-desc">32 chapitres Â· 276 cartes Â· Histoire, GÃ©o, EMC</div>
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Histoire-Géo-EMC</div>
+        <div class="card-desc">32 chapitres · 276 cartes · Histoire, Géo, EMC</div>
         <div class="card-badge new">276 cartes</div>
       </a>
       <a href="flashcards-sciences.html" class="card sc">
-        <div class="card-icon">ðŸ”¬</div>
+        <div class="card-icon">🔬</div>
         <div class="card-title">Sciences</div>
-        <div class="card-desc">26 chapitres Â· 260 cartes Â· SVT + Physique-Chimie</div>
+        <div class="card-desc">26 chapitres · 260 cartes · SVT + Physique-Chimie</div>
         <div class="card-badge new">260 cartes</div>
       </a>
     </div>
   </div>
 
-  <!-- â”€â”€ AUTOMATISMES â”€â”€ -->
+  <!-- ── AUTOMATISMES ── -->
   <div class="section">
     <div class="section-header">
       <span class="section-icon">âš¡</span>
       <span class="section-title">Automatismes</span>
-      <span class="section-desc">RÃ¨gle 20-10-10 Â· Spaced repetition Â· â†’ Suivi parental</span>
+      <span class="section-desc">Règle 20-10-10 · Spaced repetition · → Suivi parental</span>
     </div>
     <div class="cards wide">
       <a href="automatismes-francais.html" class="card fr">
-        <div class="card-icon">ðŸ‡«ðŸ‡·</div>
-        <div class="card-title">FranÃ§ais</div>
-        <div class="card-desc">40 questions Â· Chapitres faibles en prioritÃ©</div>
-        <div class="card-badge ia">â†’ Suivi parental</div>
+        <div class="card-icon">🇫🇷</div>
+        <div class="card-title">Français</div>
+        <div class="card-desc">40 questions · Chapitres faibles en priorité</div>
+        <div class="card-badge ia">→ Suivi parental</div>
       </a>
       <a href="automatismes-maths.html" class="card ma">
-        <div class="card-icon">ðŸ“</div>
-        <div class="card-title">MathÃ©matiques</div>
-        <div class="card-desc">40 questions Â· Calcul + notions clÃ©s</div>
-        <div class="card-badge ia">â†’ Suivi parental</div>
+        <div class="card-icon">📐</div>
+        <div class="card-title">Mathématiques</div>
+        <div class="card-desc">40 questions · Calcul + notions clés</div>
+        <div class="card-badge ia">→ Suivi parental</div>
       </a>
       <a href="automatismes-histgeo.html" class="card hi">
-        <div class="card-icon">ðŸŒ</div>
-        <div class="card-title">Histoire-GÃ©o-EMC</div>
-        <div class="card-desc">40 questions Â· Histoire, GÃ©o, EMC au choix</div>
-        <div class="card-badge ia">â†’ Suivi parental</div>
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Histoire-Géo-EMC</div>
+        <div class="card-desc">40 questions · Histoire, Géo, EMC au choix</div>
+        <div class="card-badge ia">→ Suivi parental</div>
       </a>
       <a href="automatismes-sciences.html" class="card sc">
-        <div class="card-icon">ðŸ”¬</div>
+        <div class="card-icon">🔬</div>
         <div class="card-title">Sciences</div>
-        <div class="card-desc">40 questions Â· SVT + Physique-Chimie</div>
-        <div class="card-badge ia">â†’ Suivi parental</div>
+        <div class="card-desc">40 questions · SVT + Physique-Chimie</div>
+        <div class="card-badge ia">→ Suivi parental</div>
       </a>
     </div>
   </div>
 
-  <!-- â”€â”€ SUJETS BREVET â”€â”€ -->
+  <!-- ── SUJETS BREVET ── -->
   <div class="section">
     <div class="section-header">
-      <span class="section-icon">ðŸ“„</span>
+      <span class="section-icon">📄</span>
       <span class="section-title">Sujets officiels DNB</span>
-      <span class="section-desc">Liens PDF vÃ©rifiÃ©s Â· Correction IA Â· Export PDF</span>
+      <span class="section-desc">Liens PDF vérifiés · Correction IA · Export PDF</span>
     </div>
     <div class="cards">
       <a href="sujets-maths.html" class="card ma">
-        <div class="card-icon">ðŸ“</div>
-        <div class="card-title">Maths â€” 10 sujets</div>
-        <div class="card-desc">2022â€“2024 Â· Correction IA question par question</div>
-        <div class="card-badge pdf">PDF officiel â¬‡</div>
+        <div class="card-icon">📐</div>
+        <div class="card-title">Maths — 10 sujets</div>
+        <div class="card-desc">2022–2024 · Correction IA question par question</div>
+        <div class="card-badge pdf">PDF officiel ⬇</div>
       </a>
       <a href="sujets-francais.html" class="card fr">
-        <div class="card-icon">ðŸ‡«ðŸ‡·</div>
-        <div class="card-title">FranÃ§ais â€” 10 sujets</div>
-        <div class="card-desc">ComprÃ©hension Â· DictÃ©e Â· RÃ©daction Â· Correction IA</div>
-        <div class="card-badge pdf">PDF officiel â¬‡</div>
+        <div class="card-icon">🇫🇷</div>
+        <div class="card-title">Français — 10 sujets</div>
+        <div class="card-desc">Compréhension · Dictée · Rédaction · Correction IA</div>
+        <div class="card-badge pdf">PDF officiel ⬇</div>
       </a>
       <a href="sujets-histgeo.html" class="card hi">
-        <div class="card-icon">ðŸŒ</div>
-        <div class="card-title">Histoire-GÃ©o â€” 10 sujets</div>
-        <div class="card-desc">Documents authentiques Â· Correction IA</div>
-        <div class="card-badge pdf">PDF officiel â¬‡</div>
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Histoire-Géo — 10 sujets</div>
+        <div class="card-desc">Documents authentiques · Correction IA</div>
+        <div class="card-badge pdf">PDF officiel ⬇</div>
       </a>
       <a href="sujets-sciences.html" class="card sc">
-        <div class="card-icon">ðŸ”¬</div>
-        <div class="card-title">Sciences â€” 10 sujets</div>
-        <div class="card-desc">PC + SVT Â· Correction IA + officielle en rouge</div>
-        <div class="card-badge pdf">PDF officiel â¬‡</div>
+        <div class="card-icon">🔬</div>
+        <div class="card-title">Sciences — 10 sujets</div>
+        <div class="card-desc">PC + SVT · Correction IA + officielle en rouge</div>
+        <div class="card-badge pdf">PDF officiel ⬇</div>
       </a>
     </div>
   </div>
 
-  <!-- â”€â”€ OUTILS â”€â”€ -->
+  <!-- ── OUTILS ── -->
   <div class="section">
     <div class="section-header">
-      <span class="section-icon">ðŸ› </span>
+      <span class="section-icon">🛠</span>
       <span class="section-title">Outils</span>
-      <span class="section-desc">Agent oral Â· Suivi parental</span>
+      <span class="section-desc">Agent oral · Suivi parental</span>
     </div>
     <div class="cards">
       <a href="agent-oral.html" class="card sp">
-        <div class="card-icon">ðŸŽ¤</div>
+        <div class="card-icon">🎤</div>
         <div class="card-title">Agent oral IA</div>
-        <div class="card-desc">Sujet libre Â· 3+7 questions Â· Correction IA Â· PDF export</div>
+        <div class="card-desc">Sujet libre · 3+7 questions · Correction IA · PDF export</div>
         <div class="card-badge ia">Correcteur IA</div>
       </a>
       <a href="suivi-parent.html" class="card" style="--accent:#a07af5">
-        <div class="card-icon">ðŸ“Š</div>
+        <div class="card-icon">📊</div>
         <div class="card-title">Suivi parental</div>
-        <div class="card-desc">Streak Â· Chapitres faibles Â· Progression par matiÃ¨re Â· Alertes</div>
-        <div class="card-badge" style="border-color:rgba(160,122,245,.3);color:#a07af5;background:rgba(160,122,245,.06)">Temps rÃ©el</div>
+        <div class="card-desc">Streak · Chapitres faibles · Progression par matière · Alertes</div>
+        <div class="card-badge" style="border-color:rgba(160,122,245,.3);color:#a07af5;background:rgba(160,122,245,.06)">Temps réel</div>
       </a>
     </div>
   </div>
@@ -473,14 +473,14 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </div>
 
 <div class="footer">
-  <span>Brevet 2026 â€” Ã‰lÃ¨ve 1 &amp; Ã‰lÃ¨ve 2</span>
+  <span>Brevet 2026 — Élève 1 &amp; Élève 2</span>
   <span id="footerDate"></span>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
-// â”€â”€ COUNTDOWN â”€â”€
+// ── COUNTDOWN ──
 function updateCountdown() {
   const dnb = new Date('2026-06-26');
   const now = new Date();
@@ -489,10 +489,10 @@ function updateCountdown() {
 }
 updateCountdown();
 
-// â”€â”€ DATE FOOTER â”€â”€
+// ── DATE FOOTER ──
 document.getElementById('footerDate').textContent = new Date().toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
 
-// â”€â”€ ELEVE â”€â”€
+// ── ELEVE ──
 let eleve = localStorage.getItem('brevet_eleve') || 'eleve1';
 
 function setEleve(e) {
@@ -503,7 +503,7 @@ function setEleve(e) {
   updateStats();
 }
 
-// â”€â”€ STATS DEPUIS LOCALSTORAGE â”€â”€
+// ── STATS DEPUIS LOCALSTORAGE ──
 const MATIERES = ['francais','maths','histoire','sciences'];
 const COULEURS = { francais:'var(--teal)', maths:'var(--gold)', histoire:'#f5a623', sciences:'var(--blue)' };
 const IDS = { francais:'Fr', maths:'Ma', histoire:'Hi', sciences:'Sc' };
@@ -530,15 +530,15 @@ function updateStats() {
   const streak = calcStreak(all);
   const moyenne = all.length ? Math.round(all.slice(0,10).reduce((a,s)=>a+s.pourcentage,0)/Math.min(all.length,10)) : 0;
 
-  document.getElementById('statStreak').textContent = streak || 'â€”';
-  document.getElementById('statSessions').textContent = all.length || 'â€”';
-  document.getElementById('statMoyenne').textContent = all.length ? moyenne + '%' : 'â€”';
+  document.getElementById('statStreak').textContent = streak || '—';
+  document.getElementById('statSessions').textContent = all.length || '—';
+  document.getElementById('statMoyenne').textContent = all.length ? moyenne + '%' : '—';
 
-  // Compter sujets faits (sessions avec matiÃ¨re 'sujet')
+  // Compter sujets faits (sessions avec matière 'sujet')
   const sujets = JSON.parse(localStorage.getItem('sujets_faits_' + eleve) || '[]');
   document.getElementById('statSujets').textContent = sujets.length || '0';
 
-  // Progression par matiÃ¨re
+  // Progression par matière
   MATIERES.forEach(m => {
     const s = getSessions(m);
     const moy = s.length ? Math.round(s.slice(0,5).reduce((a,x)=>a+x.pourcentage,0)/Math.min(s.length,5)) : 0;
@@ -546,18 +546,18 @@ function updateStats() {
     const fill = document.getElementById('prog' + id);
     const pct = document.getElementById('prog' + id + 'Pct');
     if (fill) fill.style.width = moy + '%';
-    if (pct) pct.textContent = s.length ? moy + '%' : 'â€”';
+    if (pct) pct.textContent = s.length ? moy + '%' : '—';
   });
 
-  // Alerte inactivitÃ©
+  // Alerte inactivité
   if (all.length) {
     const diff = Math.floor((Date.now() - new Date(all[0].date)) / (1000*60*60*24));
     const el = document.getElementById('alerteInactivite');
     if (diff >= 2) {
       el.classList.remove('hidden');
       document.getElementById('alerteMsg').textContent =
-        'DerniÃ¨re session il y a ' + diff + ' jour' + (diff>1?'s':'') + '. ' +
-        (eleve==='eleve1'?'Ã‰lÃ¨ve 1':'Ã‰lÃ¨ve 2') + ' doit travailler aujourd\'hui !';
+        'Dernière session il y a ' + diff + ' jour' + (diff>1?'s':'') + '. ' +
+        (eleve==='eleve1'?'Élève 1':'Élève 2') + ' doit travailler aujourd\'hui !';
     } else {
       el.classList.add('hidden');
     }
