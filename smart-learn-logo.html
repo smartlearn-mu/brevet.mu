@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Learn â€” Logo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #F4F1EA;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    padding: 40px 20px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: -32px;
+  }
+
+  /* ============ LOGO CARD - DARK ============ */
+  .logo-dark {
+    background: linear-gradient(135deg, #0D1B3E 0%, #1A2F5E 100%);
+    border-radius: 28px;
+    padding: 40px 56px;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    box-shadow: 0 20px 60px rgba(13,27,62,0.30), 0 2px 8px rgba(0,0,0,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .logo-dark::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ============ BRAIN SVG ICON ============ */
+  .brain-icon {
+    width: 90px;
+    height: 130px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .brain-icon svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* ============ TEXT BLOCK ============ */
+  .text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .brand-smart {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 58px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 4px;
+    line-height: 1;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+
+  .brand-separator {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, #C9A84C, #F0C355, #A8732A);
+    margin: 6px 0 5px 0;
+    opacity: 0.7;
+  }
+
+  .brand-learn {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 58px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #C9A84C 0%, #F0C355 50%, #A8732A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 8px;
+    line-height: 1;
+    filter: drop-shadow(0 0 8px rgba(240,195,85,0.3));
+  }
+
+  .brand-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
+
+  /* ============ LOGO CARD - LIGHT ============ */
+  .logo-light {
+    background: #FFFFFF;
+    border-radius: 28px;
+    padding: 40px 56px;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    box-shadow: 0 8px 40px rgba(13,27,62,0.10), 0 1px 4px rgba(0,0,0,0.06);
+    border: 1px solid rgba(13,27,62,0.08);
+  }
+
+  .logo-light .brand-smart {
+    color: #0D1B3E;
+  }
+
+  .logo-light .brand-tagline {
+    color: rgba(13,27,62,0.35);
+  }
+
+  /* ============ COMPACT ICON ONLY ============ */
+  .logo-icon-only {
+    background: linear-gradient(135deg, #0D1B3E 0%, #1A2F5E 100%);
+    border-radius: 22px;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(13,27,62,0.35);
+    border: 1px solid rgba(201,168,76,0.4);
+  }
+
+  /* ============ CARDS ROW ============ */
+  .row {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* ============ ANIMATED GLOW ============ */
+  @keyframes subtleGlow {
+    0%, 100% { filter: drop-shadow(0 0 6px rgba(240,195,85,0.25)); }
+    50% { filter: drop-shadow(0 0 14px rgba(240,195,85,0.5)); }
+  }
+
+  .gold-circuit {
+    animation: subtleGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo-dark, .logo-light, .logo-icon-only {
+    animation: fadeUp 0.6s ease both;
+  }
+  .logo-light { animation-delay: 0.15s; }
+  .logo-icon-only { animation-delay: 0.3s; }
+</style>
+
+
+
+<script>
+const MONETIZATION={prix:999,devise:'Rs',essaiJours:2,whatsapp:'https://wa.me/23058459402',numeroJuice:'+230 58 45 94 02',STORAGE_KEYS:{trialStart:'brevet_start',paidValid:'brevet_paid',lastReminder:'brevet_last_reminder',overlayDismissed:'brevet_ov_dismiss'}};
+function estEnEssai(){var s=localStorage.getItem(MONETIZATION.STORAGE_KEYS.trialStart);if(!s)return true;return(Date.now()-parseInt(s))/86400000<MONETIZATION.essaiJours;}
+function essaiExpire(){var s=localStorage.getItem(MONETIZATION.STORAGE_KEYS.trialStart);if(!s)return false;return(Date.now()-parseInt(s))/86400000>=MONETIZATION.essaiJours;}
+function aAccesComplet(){if(localStorage.getItem(MONETIZATION.STORAGE_KEYS.paidValid)==='true')return true;return estEnEssai();}
+function aAccesPayant(){return localStorage.getItem(MONETIZATION.STORAGE_KEYS.paidValid)==='true';}
+function joursRestantsEssai(){var s=localStorage.getItem(MONETIZATION.STORAGE_KEYS.trialStart);if(!s)return MONETIZATION.essaiJours;return Math.max(0,Math.ceil(MONETIZATION.essaiJours-(Date.now()-parseInt(s))/86400000));}
+function validerCode(code,cb){var PROXY='https://script.google.com/macros/s/AKfycbxxQCRDZvKAb9fuXkDslK7LYMXjcIrIi-_EpA8DWT1-tTelSpYcMxPkiSPG5bKheLTY/exec';fetch(PROXY,{method:'POST',body:new URLSearchParams({data:JSON.stringify({userId:localStorage.getItem('user_id')||'anon',action:'valider_code',code:code.trim(),source:document.title||''})})}).then(function(r){return r.json();}).then(function(d){if(d&&d.success){localStorage.setItem(MONETIZATION.STORAGE_KEYS.paidValid,'true');if(cb)cb({success:true,message:'Acces debloque!'});}else{if(cb)cb({success:false,message:d.error||'Code invalide.'});}}).catch(function(){if(cb)cb({success:false,message:'Verifiez votre connexion.'});});}
+function afficherOverlay(){if(document.getElementById('monet-overlay'))return;var canClose=estEnEssai();var o=document.createElement('div');o.id='monet-overlay';o.innerHTML='<style>#monet-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(9,9,15,0.97);z-index:99999;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;}.monet-card{background:#111118;border:1px solid #2a2a38;border-radius:16px;padding:32px 28px;max-width:460px;width:92%;color:#e8e8f0;text-align:center;}.monet-wa-btn{display:flex;align-items:center;justify-content:center;padding:13px 28px;border-radius:12px;font-weight:800;font-size:15px;text-decoration:none;background:#25D366;color:#fff;margin:12px 0;width:100%;box-sizing:border-box;border:none;cursor:pointer;}.monet-input{width:100%;background:#0d0d14;border:1px solid #2a2a38;border-radius:10px;color:#e8e8f0;font-size:15px;padding:12px 16px;text-align:center;outline:none;box-sizing:border-box;margin-bottom:10px;}.monet-btn{padding:11px 24px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;border:1px solid rgba(94,207,177,0.3);background:rgba(94,207,177,0.1);color:#5ecfb1;margin:4px;}.monet-btn.ghost{background:transparent;color:#9090a8;border:1px solid #2a2a38;}.monet-msg{font-size:13px;margin-top:10px;min-height:24px;}</style><div class="monet-card"><div style="font-size:44px;margin-bottom:10px;">60</div><div style="font-size:22px;font-weight:800;color:#e8c87a;margin-bottom:8px;">Essai termine</div><div style="font-size:40px;font-weight:800;color:#5ecfb1;margin:8px 0;">999 Rs <span style="font-size:16px;color:#9090a8;">/ an</span></div><div style="background:#0d0d14;border-radius:10px;padding:14px;margin:12px 0;text-align:left;font-size:13px;line-height:2;">1. Envoyez 999 Rs Juice au <strong>+230 58 45 94 02</strong><br>2. Envoyez capture WhatsApp<br>3. Recevez votre code</div><a href="https://wa.me/23058459402?text=Bonjour%20Hub%20Brevet%202026%20999Rs%20capture%20Juice" target="_blank" class="monet-wa-btn">Contacter WhatsApp</a><hr style="border:none;border-top:1px solid #2a2a38;margin:16px 0;"><input type="text" class="monet-input" id="monet-code-input" placeholder="Votre code" maxlength="40"><div><button class="monet-btn" id="monet-valider">Valider le code</button>'+(canClose?'<button class="monet-btn ghost" id="monet-close">Continuer essai</button>':'')+' </div><div class="monet-msg" id="monet-msg"></div></div>';document.body.appendChild(o);document.getElementById('monet-valider').onclick=function(){var code=document.getElementById('monet-code-input').value.trim();var msg=document.getElementById('monet-msg');if(!code){msg.style.color='#e87a7a';msg.textContent='Entrez un code.';return;}msg.style.color='#9090a8';msg.textContent='Verification...';validerCode(code,function(r){if(r.success){msg.style.color='#5ecfb1';msg.textContent=r.message;setTimeout(function(){document.getElementById('monet-overlay').remove();location.reload();},1500);}else{msg.style.color='#e87a7a';msg.textContent=r.message;}});};var cl=document.getElementById('monet-close');if(cl)cl.onclick=function(){document.getElementById('monet-overlay').remove();};}
+function afficherBlocageEssaiExpire(){afficherOverlay();}
+function creerBanniere(){if(document.getElementById('monet-banner')||aAccesPayant())return;var j=joursRestantsEssai(),expire=essaiExpire();var bg=expire?'#e87a7a':'#e8c87a',col=expire?'#fff':'#09090f';var b=document.createElement('div');b.id='monet-banner';b.innerHTML='<style>#monet-banner{position:sticky;top:0;left:0;right:0;background:'+bg+';color:'+col+';font-family:Arial,sans-serif;font-size:13px;padding:9px 20px;z-index:9998;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;}.monet-banner-btn{padding:5px 16px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;border:none;background:'+col+';color:'+bg+';}</style><span>'+(expire?'Essai termine - IA bloquee':'Essai gratuit - J-'+j+' '+(j<=1?'jour restant':'jours restants')+' - 999 Rs/an')+'</span><button class="monet-banner-btn" onclick="afficherOverlay()">'+(expire?'Debloquer':'Debloquer WhatsApp')+'</button>';document.body.insertBefore(b,document.body.firstChild);}
+function initMonetization(){if(!localStorage.getItem(MONETIZATION.STORAGE_KEYS.trialStart))localStorage.setItem(MONETIZATION.STORAGE_KEYS.trialStart,Date.now().toString());if(!localStorage.getItem('user_id'))localStorage.setItem('user_id',(typeof crypto!=='undefined'&&crypto.randomUUID)?crypto.randomUUID():'user_'+Date.now());if(aAccesPayant())return;creerBanniere();if(essaiExpire())setTimeout(afficherOverlay,500);}
+window.aAccesComplet=aAccesComplet;window.aAccesPayant=aAccesPayant;window.essaiExpire=essaiExpire;window.afficherBlocageEssaiExpire=afficherBlocageEssaiExpire;window.afficherOverlay=afficherOverlay;window.initMonetization=initMonetization;
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initMonetization);else initMonetization();
+</script>
+</head>
+<body>
+
+<h2>Version foncÃ©e â€” rÃ©fÃ©rence principale</h2>
+
+<!-- DARK VERSION -->
+<div class="logo-dark">
+  <div class="brain-icon">
+    <svg viewBox="0 0 110 160" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+      <defs>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#C9A84C"/>
+          <stop offset="50%" stop-color="#F0C355"/>
+          <stop offset="100%" stop-color="#A8732A"/>
+        </linearGradient>
+        <filter id="glow1">
+          <feGaussianBlur stdDeviation="1.5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- BRAIN left hemisphere -->
+      <path d="
+        M 58 8
+        C 44 6, 28 14, 20 28
+        C 12 42, 16 54, 10 66
+        C 4 78, 2 88, 6 100
+        C 10 112, 22 118, 26 128
+        C 30 138, 28 150, 38 156
+        C 48 162, 60 158, 66 152
+        C 72 146, 72 138, 72 138
+        L 72 8
+        Z
+      " fill="none" stroke="white" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" opacity="0.95"/>
+
+      <!-- Sulci folds -->
+      <path d="M 58 8 C 68 22, 72 38, 72 56" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
+      <path d="M 14 60 C 28 53, 46 56, 58 68" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.55"/>
+      <path d="M 8 94 C 24 86, 44 90, 56 102" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.55"/>
+      <path d="M 28 130 C 42 122, 56 126, 64 136" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.55"/>
+
+      <!-- Center divider -->
+      <line x1="72" y1="8" x2="72" y2="152" stroke="white" stroke-width="2" opacity="0.3"/>
+
+      <!-- Center hub dot -->
+      <circle cx="72" cy="80" r="4" fill="url(#g1)" filter="url(#glow1)"/>
+
+      <!-- CIRCUITS (gold + navy) right side -->
+      <!-- Line 1 top - gold -->
+      <g class="gold-circuit">
+        <polyline points="72,30 88,30 100,18" fill="none" stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="100" cy="18" r="5.5" fill="#0D1B3E" stroke="url(#g1)" stroke-width="2.5"/>
+      </g>
+
+      <!-- Line 2 - navy/blue -->
+      <polyline points="72,55 92,55 106,46" fill="none" stroke="#3D5DA8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="106" cy="46" r="5.5" fill="#0D1B3E" stroke="#3D5DA8" stroke-width="2.5"/>
+
+      <!-- Line 3 mid - gold -->
+      <g class="gold-circuit">
+        <polyline points="72,80 108,80" fill="none" stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="108" cy="80" r="5.5" fill="#0D1B3E" stroke="url(#g1)" stroke-width="2.5"/>
+      </g>
+
+      <!-- Line 4 - navy/blue -->
+      <polyline points="72,105 92,105 106,114" fill="none" stroke="#3D5DA8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="106" cy="114" r="5.5" fill="#0D1B3E" stroke="#3D5DA8" stroke-width="2.5"/>
+
+      <!-- Line 5 bottom - gold -->
+      <g class="gold-circuit">
+        <polyline points="72,132 88,132 100,144" fill="none" stroke="url(#g1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="100" cy="144" r="5.5" fill="#0D1B3E" stroke="url(#g1)" stroke-width="2.5"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="text-block">
+    <span class="brand-smart">SMART</span>
+    <div class="brand-separator"></div>
+    <span class="brand-learn">LEARN</span>
+    <span class="brand-tagline">Apprendre Â· Progresser Â· Exceller</span>
+  </div>
+</div>
+
+<h2>Version claire â€” usage sur fond blanc</h2>
+
+<!-- LIGHT VERSION -->
+<div class="logo-light">
+  <div class="brain-icon">
+    <svg viewBox="0 0 110 160" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+      <defs>
+        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#C9A84C"/>
+          <stop offset="50%" stop-color="#D4A017"/>
+          <stop offset="100%" stop-color="#8B6014"/>
+        </linearGradient>
+      </defs>
+      <path d="M 58 8 C 44 6, 28 14, 20 28 C 12 42, 16 54, 10 66 C 4 78, 2 88, 6 100 C 10 112, 22 118, 26 128 C 30 138, 28 150, 38 156 C 48 162, 60 158, 66 152 C 72 146, 72 138, 72 138 L 72 8 Z"
+        fill="none" stroke="#0D1B3E" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M 58 8 C 68 22, 72 38, 72 56" fill="none" stroke="#0D1B3E" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <path d="M 14 60 C 28 53, 46 56, 58 68" fill="none" stroke="#0D1B3E" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
+      <path d="M 8 94 C 24 86, 44 90, 56 102" fill="none" stroke="#0D1B3E" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
+      <path d="M 28 130 C 42 122, 56 126, 64 136" fill="none" stroke="#0D1B3E" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
+      <line x1="72" y1="8" x2="72" y2="152" stroke="#0D1B3E" stroke-width="1.5" opacity="0.2"/>
+      <circle cx="72" cy="80" r="4" fill="url(#g2)"/>
+      <polyline points="72,30 88,30 100,18" fill="none" stroke="url(#g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="100" cy="18" r="5.5" fill="white" stroke="url(#g2)" stroke-width="2.5"/>
+      <polyline points="72,55 92,55 106,46" fill="none" stroke="#2A4A9A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="106" cy="46" r="5.5" fill="white" stroke="#2A4A9A" stroke-width="2.5"/>
+      <polyline points="72,80 108,80" fill="none" stroke="url(#g2)" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="108" cy="80" r="5.5" fill="white" stroke="url(#g2)" stroke-width="2.5"/>
+      <polyline points="72,105 92,105 106,114" fill="none" stroke="#2A4A9A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="106" cy="114" r="5.5" fill="white" stroke="#2A4A9A" stroke-width="2.5"/>
+      <polyline points="72,132 88,132 100,144" fill="none" stroke="url(#g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="100" cy="144" r="5.5" fill="white" stroke="url(#g2)" stroke-width="2.5"/>
+    </svg>
+  </div>
+  <div class="text-block">
+    <span class="brand-smart" style="color:#0D1B3E">SMART</span>
+    <div class="brand-separator"></div>
+    <span class="brand-learn">LEARN</span>
+    <span class="brand-tagline" style="color:rgba(13,27,62,0.4)">Apprendre Â· Progresser Â· Exceller</span>
+  </div>
+</div>
+
+<h2>IcÃ´ne seule â€” app icon / favicon</h2>
+
+<!-- ICON ONLY -->
+<div class="row">
+  <div class="logo-icon-only">
+    <svg viewBox="0 0 110 160" width="52" height="75" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+      <defs>
+        <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#C9A84C"/>
+          <stop offset="50%" stop-color="#F0C355"/>
+          <stop offset="100%" stop-color="#A8732A"/>
+        </linearGradient>
+      </defs>
+      <path d="M 58 8 C 44 6, 28 14, 20 28 C 12 42, 16 54, 10 66 C 4 78, 2 88, 6 100 C 10 112, 22 118, 26 128 C 30 138, 28 150, 38 156 C 48 162, 60 158, 66 152 C 72 146, 72 138, 72 138 L 72 8 Z"
+        fill="none" stroke="white" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M 58 8 C 68 22, 72 38, 72 56" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+      <path d="M 14 60 C 28 53, 46 56, 58 68" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
+      <path d="M 8 94 C 24 86, 44 90, 56 102" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
+      <circle cx="72" cy="80" r="4" fill="url(#g3)"/>
+      <polyline points="72,30 88,30 100,18" fill="none" stroke="url(#g3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="100" cy="18" r="6" fill="#0D1B3E" stroke="url(#g3)" stroke-width="2.5"/>
+      <polyline points="72,80 108,80" fill="none" stroke="url(#g3)" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="108" cy="80" r="6" fill="#0D1B3E" stroke="url(#g3)" stroke-width="2.5"/>
+      <polyline points="72,132 88,132 100,144" fill="none" stroke="url(#g3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="100" cy="144" r="6" fill="#0D1B3E" stroke="url(#g3)" stroke-width="2.5"/>
+    </svg>
+  </div>
+</div>
+
+</body>
+</html>
