@@ -407,21 +407,7 @@ async function corriger(sIdx, ei, qi, qid) {
   const pts = exo.pts;
   const qTexteClean = q.texte.split('\n').join(' ').substring(0,300);
 
-  const system = `Tu es un correcteur expert du DNB en SCIENCES (${disc}), exigeant et bienveillant.
-
-Ta correction doit être APPROFONDIE. Réponds UNIQUEMENT en JSON valide avec cette structure exacte :
-{
-  "note": "X/${pts}",
-  "cours_su": "Oui" ou "Partiel" ou "Non",
-  "methode": "Oui" ou "Partiel" ou "Non",
-  "commentaire": "Analyse détaillée de la réponse (3-5 lignes)",
-  "pistes": "2 ou 3 conseils précis pour progresser"
-}
-
-Critères DNB SCIENCES :
-- cours_su : définitions, lois, formules, vocabulaire scientifique corrects ?
-- methode : raisonnement logique, étapes visibles, exploitation des documents, conclusion explicite
-- La note sur ${pts} pts doit refléter la qualité de la réponse`;
+  var system = 'Tu es correcteur DNB SCIENCES (' + disc + ') — exigeant, bienveillant, precis.' + ' Question (' + pts + ' pts). COURS=' + Math.round(pts/3*2)/2 + 'pts / REDACTION=' + Math.round(pts/3*2)/2 + 'pts / METHODE=' + Math.round(pts/3*2)/2 + 'pts.' + ' COURS : formules, lois, vocabulaire scientifique precis.' + ' REDACTION : calculs avec unites, phrases completes, conclusion, exploitation documents.' + ' METHODE : demarche structuree, observation-hypothese-conclusion.' + ' NOTE arrondie au 0.5 pres. JAMAIS 1.3/4.' + ' Question : ' + qTexteClean + ' JSON : {note_cours:X,note_redaction:X,note_methode:X,note_finale:X,sur:' + pts + ',commentaire:analyse,pistes:conseils}';
 
   const prompt = `Sujet: ${s.titre} (${s.annee})
 Exercice: ${exo.label}
@@ -441,20 +427,16 @@ Réponse élève: ${ans}`;
     });
     saveCorrections();
 
-    panel.innerHTML = `
-      <div class="corr-ia">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
-          <div class="corr-note">✓ ${json ? json.note : '?'} / ${pts}</div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
-            <span style="font-size:10px;color:#9090a8;">Cours</span>${badge(json ? json.cours_su : '?')}
-            <span style="font-size:10px;color:#9090a8;margin-left:6px;">Méthode</span>${badge(json ? json.methode : '?')}
-          </div>
-        </div>
-        <div class="corr-txt">${json ? json.commentaire : txt}</div>
-        ${json && json.pistes ? '<div class="corr-conseil" style="margin-top:8px;color:#e8c87a">🎯 ' + esc(json.pistes) + '</div>' : ''}
-      </div>
-      <div class="corr-off"><strong>📖 CORRECTION OFFICIELLE</strong><br>${esc(q.rep)}</div>
-      <button class="btn-copy" onclick="copier(this)">📋 Copier</button>`;
+    panel.innerHTML = '<div class="corr-ia">'
+      + '<div class="corr-note">✓ ' + (json ? (json.note_finale||json.note||'?') : '?') + ' / ' + pts + '</div>'
+      + (json && json.note_cours != null ? '<div class="corr-conseil">📚 <strong>Cours :</strong> ' + json.note_cours + '/' + Math.round(pts/3*2)/2 + '</div>' : '')
+      + (json && json.note_redaction != null ? '<div class="corr-conseil">✏️ <strong>Rédaction :</strong> ' + json.note_redaction + '/' + Math.round(pts/3*2)/2 + '</div>' : '')
+      + (json && json.note_methode != null ? '<div class="corr-conseil">🎯 <strong>Méthode :</strong> ' + json.note_methode + '/' + Math.round(pts/3*2)/2 + '</div>' : '')
+      + '<div class="corr-txt">' + esc(json ? (json.commentaire||'') : txt) + '</div>'
+      + (json && json.pistes ? '<div class="corr-conseil" style="color:#e8c87a">💡 <strong>Pistes :</strong> ' + esc(json.pistes) + '</div>' : '')
+      + '</div>'
+      + '<div class="corr-off"><strong>📖 CORRECTION OFFICIELLE</strong><br>' + esc(q.rep||q.correction||'') + '</div>'
+      + '<button class="btn-copy" onclick="copier(this)">📋 Copier</button>';
   } catch(err) {
     let errMsg = err.message;
     if (errMsg === 'ACCES_BLOQUE') errMsg = 'Accès bloqué. Veuillez activer votre abonnement.';

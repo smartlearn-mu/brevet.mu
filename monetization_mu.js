@@ -1,4 +1,4 @@
-﻿// ============================================================
+// ============================================================
 // SMART LEARN â€” MONÃ‰TISATION MAURICE (v1.0)
 // Essai 2 jours Â· 999 Rs Â· WhatsApp + Juice
 // BanniÃ¨re permanente non fermable
